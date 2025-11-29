@@ -1,4 +1,133 @@
 // ============================================
+// CARROUSEL 3D TÉMOIGNAGES
+// ============================================
+
+class FloTestimonialsCarousel {
+    constructor() {
+        this.track = document.getElementById('flo-testimonials-track');
+        this.prevButton = document.getElementById('flo-carousel-prev');
+        this.nextButton = document.getElementById('flo-carousel-next');
+        this.dotsContainer = document.getElementById('flo-testimonials-dots');
+        
+        if (!this.track) return;
+        
+        this.slides = Array.from(this.track.querySelectorAll('.flo-testimonials-slide'));
+        this.dots = Array.from(this.dotsContainer?.querySelectorAll('.flo-testimonials-dot') || []);
+        
+        this.currentIndex = 0;
+        this.totalSlides = this.slides.length;
+        this.autoplayInterval = null;
+        this.autoplayDuration = 5000; // 5 secondes
+        this.transitionDuration = 600; // ms
+        
+        this.init();
+    }
+    
+    init() {
+        if (this.totalSlides === 0) return;
+        
+        // Event listeners
+        this.prevButton?.addEventListener('click', () => this.prev());
+        this.nextButton?.addEventListener('click', () => this.next());
+        
+        // Dots navigation
+        this.dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => this.goToSlide(index));
+            
+            // Keyboard navigation on dots
+            dot.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.goToSlide(index);
+                }
+            });
+        });
+        
+        // Pause autoplay on hover
+        this.track.addEventListener('mouseenter', () => this.stopAutoplay());
+        this.track.addEventListener('mouseleave', () => this.startAutoplay());
+        
+        // Initial state
+        this.updateSlides();
+        
+        // Start autoplay
+        this.startAutoplay();
+    }
+    
+    updateSlides() {
+        this.slides.forEach((slide, index) => {
+            const offset = index - this.currentIndex;
+            
+            // Remove all states
+            slide.removeAttribute('data-state');
+            
+            // Determine state
+            if (offset === 0) {
+                slide.setAttribute('data-state', 'active');
+            } else if (offset === -1 || (this.currentIndex === 0 && index === this.totalSlides - 1)) {
+                slide.setAttribute('data-state', 'prev');
+            } else if (offset === 1 || (this.currentIndex === this.totalSlides - 1 && index === 0)) {
+                slide.setAttribute('data-state', 'next');
+            } else {
+                slide.setAttribute('data-state', 'hidden');
+            }
+        });
+        
+        // Update dots
+        this.dots.forEach((dot, index) => {
+            if (index === this.currentIndex) {
+                dot.classList.add('flo-testimonials-dot--active');
+                dot.setAttribute('aria-current', 'true');
+            } else {
+                dot.classList.remove('flo-testimonials-dot--active');
+                dot.removeAttribute('aria-current');
+            }
+        });
+    }
+    
+    next() {
+        this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
+        this.updateSlides();
+        this.resetAutoplay();
+    }
+    
+    prev() {
+        this.currentIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+        this.updateSlides();
+        this.resetAutoplay();
+    }
+    
+    goToSlide(index) {
+        if (index >= 0 && index < this.totalSlides) {
+            this.currentIndex = index;
+            this.updateSlides();
+            this.resetAutoplay();
+        }
+    }
+    
+    startAutoplay() {
+        this.autoplayInterval = setInterval(() => this.next(), this.autoplayDuration);
+    }
+    
+    stopAutoplay() {
+        if (this.autoplayInterval) {
+            clearInterval(this.autoplayInterval);
+            this.autoplayInterval = null;
+        }
+    }
+    
+    resetAutoplay() {
+        this.stopAutoplay();
+        this.startAutoplay();
+    }
+}
+
+// Initialize carousel when DOM is ready
+function initTestimonialsCarousel() {
+    new FloTestimonialsCarousel();
+}
+
+// ============================================
 // INITIALIZE LUCIDE ICONS
 // ============================================
 
@@ -13,6 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFAQ();
     initScrollAnimations();
     initPricingSimulator();
+    initTestimonialsCarousel(); // Ajouter le carrousel
 });
 
 // ============================================
