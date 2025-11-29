@@ -391,7 +391,7 @@
     </section>
 
     <!-- ============================================ -->
-    <!-- TÉMOIGNAGES -->
+    <!-- TÉMOIGNAGES - CARROUSEL 3D -->
     <!-- ============================================ -->
     <section class="testimonials section">
         <div class="container">
@@ -399,47 +399,77 @@
                 <h2 class="section__title">Ils ont transformé leur organisation avec FLO</h2>
             </div>
             
-            <div class="testimonials__grid">
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-card__quote">
-                        <i data-lucide="quote"></i>
-                        <p>"FLO nous a permis de passer de 15 à 40 employés sans perdre en efficacité. Tous nos process sont documentés et accessibles en un clic."</p>
+            <!-- Carrousel 3D Container -->
+            <div class="flo-testimonials-carousel">
+                <!-- Bouton Précédent -->
+                <button class="flo-testimonials-nav flo-testimonials-nav--prev" id="flo-carousel-prev" aria-label="Témoignage précédent">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+                
+                <!-- Track du carrousel -->
+                <div class="flo-testimonials-track" id="flo-testimonials-track">
+                    <!-- Slide 1 -->
+                    <div class="flo-testimonials-slide" data-index="0">
+                        <div class="testimonial-card">
+                            <div class="testimonial-card__quote">
+                                <i data-lucide="quote"></i>
+                                <p>"FLO nous a permis de passer de 15 à 40 employés sans perdre en efficacité. Tous nos process sont documentés et accessibles en un clic."</p>
+                            </div>
+                            <div class="testimonial-card__author">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%234A90E2' width='60' height='60'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23fff'%3EML%3C/text%3E%3C/svg%3E" alt="Marie Legrand" class="testimonial-card__avatar">
+                                <div class="testimonial-card__info">
+                                    <p class="testimonial-card__name">Marie Legrand</p>
+                                    <p class="testimonial-card__title">DRH - TechStart</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="testimonial-card__author">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%234A90E2' width='60' height='60'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23fff'%3EML%3C/text%3E%3C/svg%3E" alt="Marie Legrand" class="testimonial-card__avatar">
-                        <div class="testimonial-card__info">
-                            <p class="testimonial-card__name">Marie Legrand</p>
-                            <p class="testimonial-card__title">DRH - TechStart</p>
+                    
+                    <!-- Slide 2 -->
+                    <div class="flo-testimonials-slide" data-index="1">
+                        <div class="testimonial-card">
+                            <div class="testimonial-card__quote">
+                                <i data-lucide="quote"></i>
+                                <p>"Notre onboarding qui prenait 3 semaines prend maintenant 2 jours. Les nouveaux collaborateurs sont autonomes dès le premier jour."</p>
+                            </div>
+                            <div class="testimonial-card__author">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%2320C997' width='60' height='60'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23fff'%3ETD%3C/text%3E%3C/svg%3E" alt="Thomas Dubois" class="testimonial-card__avatar">
+                                <div class="testimonial-card__info">
+                                    <p class="testimonial-card__name">Thomas Dubois</p>
+                                    <p class="testimonial-card__title">CEO - GrowthLab</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="flo-testimonials-slide" data-index="2">
+                        <div class="testimonial-card">
+                            <div class="testimonial-card__quote">
+                                <i data-lucide="quote"></i>
+                                <p>"Fini les emails perdus et les informations dispersées. FLO est devenu notre source de vérité unique pour tous nos process internes."</p>
+                            </div>
+                            <div class="testimonial-card__author">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%23F59E0B' width='60' height='60'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23fff'%3ESM%3C/text%3E%3C/svg%3E" alt="Sophie Martin" class="testimonial-card__avatar">
+                                <div class="testimonial-card__info">
+                                    <p class="testimonial-card__name">Sophie Martin</p>
+                                    <p class="testimonial-card__title">COO - InnovateCo</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-card__quote">
-                        <i data-lucide="quote"></i>
-                        <p>"Notre onboarding qui prenait 3 semaines prend maintenant 2 jours. Les nouveaux collaborateurs sont autonomes dès le premier jour."</p>
-                    </div>
-                    <div class="testimonial-card__author">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%2320C997' width='60' height='60'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23fff'%3ETD%3C/text%3E%3C/svg%3E" alt="Thomas Dubois" class="testimonial-card__avatar">
-                        <div class="testimonial-card__info">
-                            <p class="testimonial-card__name">Thomas Dubois</p>
-                            <p class="testimonial-card__title">CEO - GrowthLab</p>
-                        </div>
-                    </div>
-                </div>
+                <!-- Bouton Suivant -->
+                <button class="flo-testimonials-nav flo-testimonials-nav--next" id="flo-carousel-next" aria-label="Témoignage suivant">
+                    <i data-lucide="chevron-right"></i>
+                </button>
                 
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-card__quote">
-                        <i data-lucide="quote"></i>
-                        <p>"Fini les emails perdus et les informations dispersées. FLO est devenu notre source de vérité unique pour tous nos process internes."</p>
-                    </div>
-                    <div class="testimonial-card__author">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%23F59E0B' width='60' height='60'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23fff'%3ESM%3C/text%3E%3C/svg%3E" alt="Sophie Martin" class="testimonial-card__avatar">
-                        <div class="testimonial-card__info">
-                            <p class="testimonial-card__name">Sophie Martin</p>
-                            <p class="testimonial-card__title">COO - InnovateCo</p>
-                        </div>
-                    </div>
+                <!-- Dots Navigation -->
+                <div class="flo-testimonials-dots" id="flo-testimonials-dots">
+                    <button class="flo-testimonials-dot flo-testimonials-dot--active" data-index="0" aria-label="Aller au témoignage 1"></button>
+                    <button class="flo-testimonials-dot" data-index="1" aria-label="Aller au témoignage 2"></button>
+                    <button class="flo-testimonials-dot" data-index="2" aria-label="Aller au témoignage 3"></button>
                 </div>
             </div>
         </div>
