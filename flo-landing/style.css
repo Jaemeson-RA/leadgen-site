@@ -1382,11 +1382,19 @@ button {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 60px 20px;
+    padding: 60px 20px 20px;
     perspective: 2000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.flo-testimonials-carousel-wrapper {
     display: flex;
     align-items: center;
     gap: 40px;
+    width: 100%;
 }
 
 .flo-testimonials-track {
@@ -1477,7 +1485,8 @@ button {
     display: flex;
     gap: 12px;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 20px;
+    padding-top: 20px;
 }
 
 .flo-testimonials-dot {
