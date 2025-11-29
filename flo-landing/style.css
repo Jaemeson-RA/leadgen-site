@@ -3,51 +3,33 @@
 /* ============================================ */
 
 :root {
-    /* Couleurs principales */
     --color-primary: #4A90E2;
     --color-secondary: #20C997;
     --color-dark: #1A1A1A;
     --color-gray: #6B7280;
     --color-light: #F5F7FA;
     --color-white: #FFFFFF;
-    
-    /* Couleurs de statut */
     --color-success: #10B981;
     --color-warning: #F59E0B;
     --color-error: #EF4444;
-    
-    /* Typographie */
-    --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    
-    /* Espacements */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 1.5rem;
     --spacing-lg: 2rem;
     --spacing-xl: 3rem;
     --spacing-xxl: 4rem;
-    
-    /* Border radius */
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
     --radius-xl: 16px;
-    
-    /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    
-    /* Transitions */
     --transition-fast: 150ms ease-in-out;
     --transition-normal: 300ms ease-in-out;
     --transition-slow: 500ms ease-in-out;
 }
-
-/* ============================================ */
-/* RESET & BASE */
-/* ============================================ */
 
 * {
     margin: 0;
@@ -61,7 +43,7 @@ html {
 }
 
 body {
-    font-family: var(--font-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
     color: var(--color-dark);
     background-color: var(--color-white);
@@ -87,20 +69,12 @@ button {
     cursor: pointer;
 }
 
-/* ============================================ */
-/* CONTAINER */
-/* ============================================ */
-
 .container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--spacing-lg);
 }
-
-/* ============================================ */
-/* SECTION */
-/* ============================================ */
 
 .section {
     padding: var(--spacing-xxl) 0;
@@ -129,10 +103,6 @@ button {
     max-width: 700px;
     margin: 0 auto;
 }
-
-/* ============================================ */
-/* HEADER & NAVIGATION */
-/* ============================================ */
 
 .header {
     position: fixed;
@@ -194,7 +164,6 @@ button {
     transition: all var(--transition-fast);
 }
 
-/* Mobile Menu */
 @media (max-width: 768px) {
     .nav__menu {
         position: fixed;
@@ -221,10 +190,6 @@ button {
         display: flex;
     }
 }
-
-/* ============================================ */
-/* BUTTONS */
-/* ============================================ */
 
 .btn {
     display: inline-flex;
@@ -277,10 +242,6 @@ button {
     width: 100%;
     justify-content: center;
 }
-
-/* ============================================ */
-/* HERO SECTION */
-/* ============================================ */
 
 .hero {
     position: relative;
@@ -335,7 +296,6 @@ button {
     font-size: 0.875rem;
 }
 
-/* Mockup CSS */
 .mockup {
     perspective: 1000px;
 }
@@ -451,13 +411,7 @@ button {
     .mockup__main {
         grid-template-columns: 1fr;
     }
-}
-
-/* ============================================ */
-/* PROBLEMES → SOLUTIONS */
-/* ============================================ */
-
-.problems__grid {
+}.problems__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-lg);
@@ -514,69 +468,6 @@ button {
         grid-template-columns: 1fr;
     }
 }
-
-/* ============================================ */
-/* FEATURES */
-/* ============================================ */
-
-.features__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-lg);
-}
-
-.feature-card {
-    background: var(--color-white);
-    padding: var(--spacing-lg);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-    transition: all var(--transition-normal);
-}
-
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-xl);
-}
-
-.feature-card__icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-white);
-    margin-bottom: var(--spacing-md);
-    font-size: 1.5rem;
-}
-
-.feature-card__title {
-    font-size: 1.25rem;
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-dark);
-}
-
-.feature-card__text {
-    color: var(--color-gray);
-    line-height: 1.6;
-}
-
-@media (max-width: 992px) {
-    .features__grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .features__grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ============================================ */
-/* HOW IT WORKS */
-/* ============================================ */
 
 .steps {
     display: flex;
@@ -644,10 +535,6 @@ button {
         transform: rotate(90deg);
     }
 }
-
-/* ============================================ */
-/* PRICING */
-/* ============================================ */
 
 .pricing__simulator {
     max-width: 600px;
@@ -819,10 +706,6 @@ button {
     }
 }
 
-/* ============================================ */
-/* TESTIMONIALS */
-/* ============================================ */
-
 .testimonials__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -881,10 +764,6 @@ button {
         grid-template-columns: 1fr;
     }
 }
-
-/* ============================================ */
-/* DEMO FORM */
-/* ============================================ */
 
 .demo__content {
     display: grid;
@@ -987,10 +866,6 @@ button {
     }
 }
 
-/* ============================================ */
-/* FAQ */
-/* ============================================ */
-
 .faq__list {
     max-width: 800px;
     margin: 0 auto;
@@ -1046,13 +921,7 @@ button {
     padding: 0 var(--spacing-md) var(--spacing-md);
     color: var(--color-gray);
     line-height: 1.6;
-}
-
-/* ============================================ */
-/* FOOTER */
-/* ============================================ */
-
-.footer {
+}.footer {
     background: var(--color-dark);
     color: var(--color-white);
     padding: var(--spacing-xxl) 0 var(--spacing-lg);
@@ -1171,10 +1040,6 @@ button {
     }
 }
 
-/* ============================================ */
-/* ANIMATIONS */
-/* ============================================ */
-
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
@@ -1184,4 +1049,174 @@ button {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* ============================================ */
+/* SECTION FONCTIONNALITÉS - FRAMER STYLE */
+/* ============================================ */
+
+.features-section {
+    background-color: #f5f7fb;
+    padding: 80px 0;
+}
+
+.features-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.features-label {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 16px;
+}
+
+.features-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #0f172a;
+    margin: 0 auto 64px;
+    max-width: 800px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.features-section .feature-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #e5f0ff;
+    color: #4A90E2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+}
+
+.features-section .feature-card__title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 12px 0;
+    transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.features-section .feature-card__text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #6b7280;
+    margin: 0;
+    transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .features-section .feature-card:hover {
+        background: #4A90E2;
+        box-shadow: 0 10px 30px rgba(74, 144, 226, 0.2);
+        transform: translateY(-4px);
+    }
+    
+    .features-section .feature-card:hover .feature-icon {
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+    }
+    
+    .features-section .feature-card:hover .feature-card__title {
+        color: #ffffff;
+    }
+    
+    .features-section .feature-card:hover .feature-card__text {
+        color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+@media (max-width: 992px) {
+    .features-section {
+        padding: 60px 0;
+    }
+    
+    .features-inner {
+        padding: 0 5%;
+    }
+    
+    .features-title {
+        font-size: 32px;
+        margin-bottom: 48px;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 640px) {
+    .features-section {
+        padding: 48px 0;
+    }
+    
+    .features-inner {
+        padding: 0 10%;
+    }
+    
+    .features-title {
+        font-size: 28px;
+        margin-bottom: 40px;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .features-section .feature-card {
+        padding: 28px 20px;
+    }
+    
+    .feature-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 16px;
+    }
+    
+    .feature-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .features-section .feature-card__title {
+        font-size: 18px;
+    }
+    
+    .features-section .feature-card__text {
+        font-size: 14px;
+    }
 }
