@@ -1404,16 +1404,16 @@ button {
 
 /* Slide précédente (gauche) */
 .flo-testimonials-slide[data-state="prev"] {
-    opacity: 0.4;
-    transform: translateX(-80%) translateZ(-300px) rotateY(25deg) scale(0.75);
+    opacity: 0.7;
+    transform: translateX(-75%) translateZ(-200px) rotateY(15deg) scale(0.8);
     z-index: 1;
     pointer-events: none;
 }
 
 /* Slide suivante (droite) */
 .flo-testimonials-slide[data-state="next"] {
-    opacity: 0.4;
-    transform: translateX(80%) translateZ(-300px) rotateY(-25deg) scale(0.75);
+    opacity: 0.7;
+    transform: translateX(75%) translateZ(-200px) rotateY(-15deg) scale(0.8);
     z-index: 1;
     pointer-events: none;
 }
