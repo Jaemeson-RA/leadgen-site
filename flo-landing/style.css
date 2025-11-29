@@ -1532,7 +1532,11 @@ button {
 /* RESPONSIVE */
 @media (max-width: 992px) {
     .flo-testimonials-carousel {
-        padding: 40px 20px;
+        padding: 40px 20px 20px;
+        gap: 20px;
+    }
+    
+    .flo-testimonials-carousel-wrapper {
         gap: 20px;
     }
     
@@ -1563,18 +1567,20 @@ button {
 
 @media (max-width: 768px) {
     .flo-testimonials-carousel {
-        padding: 20px 10px;
+        padding: 20px 10px 20px;
         gap: 15px;
-        flex-direction: column;
+    }
+    
+    .flo-testimonials-carousel-wrapper {
+        gap: 10px;
     }
     
     .flo-testimonials-track {
         height: 550px;
-        order: 1;
     }
     
     .flo-testimonials-slide {
-        max-width: 320px;
+        max-width: 90%;
     }
     
     /* Une seule carte visible sur mobile */
@@ -1590,25 +1596,15 @@ button {
         width: 40px;
         height: 40px;
     }
-    
-    .flo-testimonials-nav--prev {
-        order: 0;
-    }
-    
-    .flo-testimonials-nav--next {
-        order: 2;
-    }
-    
-    /* Mettre les boutons horizontalement en bas sur mobile */
-    .flo-testimonials-carousel {
-        flex-direction: row;
-        justify-content: center;
-    }
 }
 
 @media (max-width: 480px) {
     .flo-testimonials-carousel {
-        padding: 20px 5px;
+        padding: 20px 5px 20px;
+    }
+    
+    .flo-testimonials-carousel-wrapper {
+        gap: 8px;
     }
     
     .flo-testimonials-track {
@@ -1616,7 +1612,17 @@ button {
     }
     
     .flo-testimonials-slide {
-        max-width: 280px;
+        max-width: 85%;
+    }
+    
+    .flo-testimonials-nav {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .flo-testimonials-carousel .testimonial-card {
+        padding: var(--spacing-lg);
+        min-height: 350px;
     }
 }
 
