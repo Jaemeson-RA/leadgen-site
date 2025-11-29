@@ -3,33 +3,51 @@
 /* ============================================ */
 
 :root {
+    /* Couleurs principales */
     --color-primary: #4A90E2;
     --color-secondary: #20C997;
     --color-dark: #1A1A1A;
     --color-gray: #6B7280;
     --color-light: #F5F7FA;
     --color-white: #FFFFFF;
+    
+    /* Couleurs de statut */
     --color-success: #10B981;
     --color-warning: #F59E0B;
     --color-error: #EF4444;
+    
+    /* Typographie */
+    --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    
+    /* Espacements */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 1.5rem;
     --spacing-lg: 2rem;
     --spacing-xl: 3rem;
     --spacing-xxl: 4rem;
+    
+    /* Border radius */
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
     --radius-xl: 16px;
+    
+    /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    
+    /* Transitions */
     --transition-fast: 150ms ease-in-out;
     --transition-normal: 300ms ease-in-out;
     --transition-slow: 500ms ease-in-out;
 }
+
+/* ============================================ */
+/* RESET & BASE */
+/* ============================================ */
 
 * {
     margin: 0;
@@ -43,7 +61,7 @@ html {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: var(--font-primary);
     line-height: 1.6;
     color: var(--color-dark);
     background-color: var(--color-white);
@@ -69,6 +87,10 @@ button {
     cursor: pointer;
 }
 
+/* ============================================ */
+/* CONTAINER */
+/* ============================================ */
+
 .container {
     width: 100%;
     max-width: 1200px;
@@ -76,11 +98,15 @@ button {
     padding: 0 var(--spacing-lg);
 }
 
+/* ============================================ */
+/* SECTION */
+/* ============================================ */
+
 .section {
     padding: var(--spacing-xxl) 0;
 }
 
-.section--gray {
+.section--bg {
     background-color: var(--color-light);
 }
 
@@ -103,6 +129,10 @@ button {
     max-width: 700px;
     margin: 0 auto;
 }
+
+/* ============================================ */
+/* HEADER & NAVIGATION */
+/* ============================================ */
 
 .header {
     position: fixed;
@@ -164,6 +194,7 @@ button {
     transition: all var(--transition-fast);
 }
 
+/* Mobile Menu */
 @media (max-width: 768px) {
     .nav__menu {
         position: fixed;
@@ -190,6 +221,10 @@ button {
         display: flex;
     }
 }
+
+/* ============================================ */
+/* BUTTONS */
+/* ============================================ */
 
 .btn {
     display: inline-flex;
@@ -242,6 +277,10 @@ button {
     width: 100%;
     justify-content: center;
 }
+
+/* ============================================ */
+/* HERO SECTION */
+/* ============================================ */
 
 .hero {
     position: relative;
@@ -296,6 +335,7 @@ button {
     font-size: 0.875rem;
 }
 
+/* Mockup CSS */
 .mockup {
     perspective: 1000px;
 }
@@ -411,7 +451,13 @@ button {
     .mockup__main {
         grid-template-columns: 1fr;
     }
-}.problems__grid {
+}
+
+/* ============================================ */
+/* PROBLEMES → SOLUTIONS */
+/* ============================================ */
+
+.problems__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-lg);
@@ -468,6 +514,69 @@ button {
         grid-template-columns: 1fr;
     }
 }
+
+/* ============================================ */
+/* FEATURES - ANCIENNE VERSION (garde pour compatibilité) */
+/* ============================================ */
+
+.features__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.feature-card {
+    background: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.feature-card__icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.5rem;
+}
+
+.feature-card__title {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-dark);
+}
+
+.feature-card__text {
+    color: var(--color-gray);
+    line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+    .features__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .features__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================ */
+/* HOW IT WORKS */
+/* ============================================ */
 
 .steps {
     display: flex;
@@ -535,6 +644,10 @@ button {
         transform: rotate(90deg);
     }
 }
+
+/* ============================================ */
+/* PRICING */
+/* ============================================ */
 
 .pricing__simulator {
     max-width: 600px;
@@ -706,6 +819,10 @@ button {
     }
 }
 
+/* ============================================ */
+/* TESTIMONIALS */
+/* ============================================ */
+
 .testimonials__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -764,6 +881,10 @@ button {
         grid-template-columns: 1fr;
     }
 }
+
+/* ============================================ */
+/* DEMO FORM */
+/* ============================================ */
 
 .demo__content {
     display: grid;
@@ -866,6 +987,10 @@ button {
     }
 }
 
+/* ============================================ */
+/* FAQ */
+/* ============================================ */
+
 .faq__list {
     max-width: 800px;
     margin: 0 auto;
@@ -921,7 +1046,13 @@ button {
     padding: 0 var(--spacing-md) var(--spacing-md);
     color: var(--color-gray);
     line-height: 1.6;
-}.footer {
+}
+
+/* ============================================ */
+/* FOOTER */
+/* ============================================ */
+
+.footer {
     background: var(--color-dark);
     color: var(--color-white);
     padding: var(--spacing-xxl) 0 var(--spacing-lg);
@@ -1040,6 +1171,10 @@ button {
     }
 }
 
+/* ============================================ */
+/* ANIMATIONS */
+/* ============================================ */
+
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
@@ -1074,6 +1209,7 @@ button {
     text-transform: uppercase;
     color: #6b7280;
     margin-bottom: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 }
 
 .features-title {
@@ -1084,6 +1220,7 @@ button {
     color: #0f172a;
     margin: 0 auto 64px;
     max-width: 800px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 }
 
 .features-grid {
@@ -1100,6 +1237,9 @@ button {
     padding: 32px 24px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+    position: relative;
+    overflow: hidden;
 }
 
 .feature-icon {
@@ -1127,6 +1267,7 @@ button {
     color: #0f172a;
     margin: 0 0 12px 0;
     transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 }
 
 .features-section .feature-card__text {
@@ -1135,8 +1276,10 @@ button {
     color: #6b7280;
     margin: 0;
     transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 }
 
+/* HOVER - Desktop uniquement */
 @media (hover: hover) and (pointer: fine) {
     .features-section .feature-card:hover {
         background: #4A90E2;
@@ -1158,6 +1301,7 @@ button {
     }
 }
 
+/* RESPONSIVE */
 @media (max-width: 992px) {
     .features-section {
         padding: 60px 0;
@@ -1220,3 +1364,210 @@ button {
         font-size: 14px;
     }
 }
+/* ============================================ */
+/* CARROUSEL 3D TÉMOIGNAGES - DÉBUT */
+/* ============================================ */
+
+.flo-testimonials-carousel {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 80px;
+    perspective: 2000px;
+}
+
+.flo-testimonials-track {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+}
+
+.flo-testimonials-slide {
+    position: absolute;
+    width: 100%;
+    max-width: 600px;
+    transition: all 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+/* États des slides - Active (centre) */
+.flo-testimonials-slide[data-state="active"] {
+    opacity: 1;
+    transform: translateX(0%) translateZ(0px) rotateY(0deg) scale(1);
+    z-index: 3;
+    pointer-events: all;
+}
+
+/* Slide précédente (gauche) */
+.flo-testimonials-slide[data-state="prev"] {
+    opacity: 0.4;
+    transform: translateX(-80%) translateZ(-300px) rotateY(25deg) scale(0.75);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Slide suivante (droite) */
+.flo-testimonials-slide[data-state="next"] {
+    opacity: 0.4;
+    transform: translateX(80%) translateZ(-300px) rotateY(-25deg) scale(0.75);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Slides cachées */
+.flo-testimonials-slide[data-state="hidden"] {
+    opacity: 0;
+    transform: translateX(0%) translateZ(-500px) scale(0.5);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Boutons de navigation */
+.flo-testimonials-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: var(--color-white);
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 300ms ease;
+    z-index: 10;
+    color: var(--color-primary);
+}
+
+.flo-testimonials-nav:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: var(--shadow-lg);
+}
+
+.flo-testimonials-nav--prev {
+    left: 0;
+}
+
+.flo-testimonials-nav--next {
+    right: 0;
+}
+
+/* Dots (indicateurs) */
+.flo-testimonials-dots {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.flo-testimonials-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #d1d5db;
+    border: none;
+    cursor: pointer;
+    transition: all 300ms ease;
+    padding: 0;
+}
+
+.flo-testimonials-dot:hover {
+    background: #9ca3af;
+    transform: scale(1.2);
+}
+
+.flo-testimonials-dot--active {
+    background: var(--color-primary);
+    width: 32px;
+    border-radius: 6px;
+}
+
+.flo-testimonials-dot:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Adaptation des cartes testimonial pour le carrousel */
+.flo-testimonials-carousel .testimonial-card {
+    background: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    height: 100%;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .flo-testimonials-carousel {
+        padding: 40px 60px;
+    }
+    
+    .flo-testimonials-track {
+        height: 400px;
+    }
+    
+    /* Masquer les slides adjacentes sur tablette */
+    .flo-testimonials-slide[data-state="prev"],
+    .flo-testimonials-slide[data-state="next"] {
+        opacity: 0.2;
+        transform: translateX(-100%) translateZ(-200px) rotateY(20deg) scale(0.7);
+    }
+    
+    .flo-testimonials-slide[data-state="next"] {
+        transform: translateX(100%) translateZ(-200px) rotateY(-20deg) scale(0.7);
+    }
+}
+
+@media (max-width: 768px) {
+    .flo-testimonials-carousel {
+        padding: 20px 50px;
+    }
+    
+    .flo-testimonials-track {
+        height: 500px;
+    }
+    
+    /* Une seule carte visible sur mobile */
+    .flo-testimonials-slide[data-state="prev"],
+    .flo-testimonials-slide[data-state="next"],
+    .flo-testimonials-slide[data-state="hidden"] {
+        opacity: 0;
+        transform: translateX(0%) scale(0.8);
+        pointer-events: none;
+    }
+    
+    .flo-testimonials-nav {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .flo-testimonials-nav--prev {
+        left: -5px;
+    }
+    
+    .flo-testimonials-nav--next {
+        right: -5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .flo-testimonials-carousel {
+        padding: 20px 40px;
+    }
+    
+    .flo-testimonials-track {
+        height: 550px;
+    }
+}
+
+/* ============================================ */
+/* CARROUSEL 3D TÉMOIGNAGES - FIN */
+/* ============================================ */
