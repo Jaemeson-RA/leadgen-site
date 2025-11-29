@@ -643,15 +643,20 @@ button {
 .step__arrow {
     color: var(--color-primary);
     font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (max-width: 992px) {
     .steps {
         flex-direction: column;
+        align-items: center;
     }
     
     .step__arrow {
         transform: rotate(90deg);
+        margin: var(--spacing-md) 0;
     }
 }
 
