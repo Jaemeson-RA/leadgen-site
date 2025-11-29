@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{meta_description}}">
+    <meta name="keywords" content="{{meta_keywords}}">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{meta_description}}">
+    <meta property="og:image" content="{{og_image}}">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{favicon}}">
+    
+    <title>{{title}}</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="{{custom_css}}">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        {{hero_section}}
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {{content_sections}}
+    </main>
+
+    <!-- FAQ Section (optional) -->
+    {{faq_section}}
+
+    <!-- Footer -->
+    <footer class="footer">
+        {{footer}}
+    </footer>
+
+    <!-- Scripts -->
+    <script src="utils.js"></script>
+    <script src="{{custom_js}}"></script>
+</body>
+</html>

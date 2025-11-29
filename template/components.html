@@ -1,0 +1,322 @@
+<!-- ============================================ -->
+<!-- HERO COMPONENTS -->
+<!-- ============================================ -->
+
+<!-- Hero Standard -->
+<section class="hero hero--standard">
+    <div class="container">
+        <div class="hero__content">
+            <h1 class="hero__title">{{hero_title}}</h1>
+            <p class="hero__subtitle">{{hero_subtitle}}</p>
+            <div class="hero__cta">
+                <a href="{{cta_link}}" class="btn btn--primary">{{cta_text}}</a>
+                <a href="{{secondary_link}}" class="btn btn--secondary">{{secondary_text}}</a>
+            </div>
+        </div>
+        <div class="hero__image">
+            <img src="{{hero_image}}" alt="{{hero_image_alt}}">
+        </div>
+    </div>
+</section>
+
+<!-- Hero Centered -->
+<section class="hero hero--centered">
+    <div class="container container--narrow">
+        <h1 class="hero__title hero__title--center">{{hero_title}}</h1>
+        <p class="hero__subtitle hero__subtitle--center">{{hero_subtitle}}</p>
+        <div class="hero__cta hero__cta--center">
+            <a href="{{cta_link}}" class="btn btn--primary btn--large">{{cta_text}}</a>
+        </div>
+    </div>
+</section>
+
+<!-- Hero with Background Image -->
+<section class="hero hero--bg" style="background-image: url('{{bg_image}}');">
+    <div class="hero__overlay"></div>
+    <div class="container">
+        <div class="hero__content hero__content--light">
+            <h1 class="hero__title">{{hero_title}}</h1>
+            <p class="hero__subtitle">{{hero_subtitle}}</p>
+            <a href="{{cta_link}}" class="btn btn--primary">{{cta_text}}</a>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SECTION COMPONENTS -->
+<!-- ============================================ -->
+
+<!-- Section Standard -->
+<section class="section">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__title">{{section_title}}</h2>
+            <p class="section__subtitle">{{section_subtitle}}</p>
+        </div>
+        <div class="section__content">
+            {{section_content}}
+        </div>
+    </div>
+</section>
+
+<!-- Section with Background -->
+<section class="section section--bg">
+    <div class="container">
+        <h2 class="section__title section__title--center">{{section_title}}</h2>
+        <div class="section__content">
+            {{section_content}}
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- CARD COMPONENTS -->
+<!-- ============================================ -->
+
+<!-- Card Simple -->
+<div class="card">
+    <div class="card__icon">
+        <img src="{{icon_url}}" alt="{{icon_alt}}">
+    </div>
+    <h3 class="card__title">{{card_title}}</h3>
+    <p class="card__text">{{card_text}}</p>
+</div>
+
+<!-- Card with Image -->
+<div class="card card--image">
+    <div class="card__image">
+        <img src="{{image_url}}" alt="{{image_alt}}">
+    </div>
+    <div class="card__body">
+        <h3 class="card__title">{{card_title}}</h3>
+        <p class="card__text">{{card_text}}</p>
+        <a href="{{link_url}}" class="card__link">{{link_text}}</a>
+    </div>
+</div>
+
+<!-- Card Hover Effect -->
+<div class="card card--hover">
+    <div class="card__front">
+        <div class="card__icon">{{icon}}</div>
+        <h3 class="card__title">{{card_title}}</h3>
+    </div>
+    <div class="card__back">
+        <p class="card__text">{{card_text}}</p>
+        <a href="{{link_url}}" class="btn btn--small">{{link_text}}</a>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- GRID COMPONENTS -->
+<!-- ============================================ -->
+
+<!-- Grid 2 Columns -->
+<div class="grid grid--2">
+    <div class="grid__item">{{content_1}}</div>
+    <div class="grid__item">{{content_2}}</div>
+</div>
+
+<!-- Grid 3 Columns -->
+<div class="grid grid--3">
+    <div class="grid__item">{{content_1}}</div>
+    <div class="grid__item">{{content_2}}</div>
+    <div class="grid__item">{{content_3}}</div>
+</div>
+
+<!-- Grid 4 Columns -->
+<div class="grid grid--4">
+    <div class="grid__item">{{content_1}}</div>
+    <div class="grid__item">{{content_2}}</div>
+    <div class="grid__item">{{content_3}}</div>
+    <div class="grid__item">{{content_4}}</div>
+</div>
+
+<!-- Grid Auto-fit -->
+<div class="grid grid--auto">
+    <!-- Items will automatically fit based on min-width -->
+    <div class="grid__item">{{content}}</div>
+    <div class="grid__item">{{content}}</div>
+    <div class="grid__item">{{content}}</div>
+</div>
+
+<!-- ============================================ -->
+<!-- BUTTON COMPONENTS -->
+<!-- ============================================ -->
+
+<!-- Primary Button -->
+<a href="{{link}}" class="btn btn--primary">{{text}}</a>
+
+<!-- Secondary Button -->
+<a href="{{link}}" class="btn btn--secondary">{{text}}</a>
+
+<!-- Outline Button -->
+<a href="{{link}}" class="btn btn--outline">{{text}}</a>
+
+<!-- Large Button -->
+<a href="{{link}}" class="btn btn--primary btn--large">{{text}}</a>
+
+<!-- Small Button -->
+<a href="{{link}}" class="btn btn--primary btn--small">{{text}}</a>
+
+<!-- Full Width Button -->
+<a href="{{link}}" class="btn btn--primary btn--full">{{text}}</a>
+
+<!-- ============================================ -->
+<!-- FAQ COMPONENTS -->
+<!-- ============================================ -->
+
+<!-- FAQ Section -->
+<section class="faq">
+    <div class="container container--narrow">
+        <h2 class="faq__title">{{faq_title}}</h2>
+        <div class="faq__list">
+            <!-- FAQ Items go here -->
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Item -->
+<div class="faq-item">
+    <button class="faq-item__question" data-faq-toggle>
+        {{question}}
+        <span class="faq-item__icon">+</span>
+    </button>
+    <div class="faq-item__answer">
+        <p>{{answer}}</p>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- TESTIMONIAL COMPONENTS -->
+<!-- ============================================ -->
+
+<!-- Testimonial Block -->
+<div class="testimonial">
+    <div class="testimonial__quote">
+        <p>"{{quote_text}}"</p>
+    </div>
+    <div class="testimonial__author">
+        <img src="{{author_image}}" alt="{{author_name}}" class="testimonial__avatar">
+        <div class="testimonial__info">
+            <p class="testimonial__name">{{author_name}}</p>
+            <p class="testimonial__title">{{author_title}}</p>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonial Grid -->
+<div class="testimonials">
+    <div class="container">
+        <h2 class="section__title section__title--center">{{testimonials_title}}</h2>
+        <div class="grid grid--3">
+            <!-- Testimonial blocks go here -->
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- FORM COMPONENTS -->
+<!-- ============================================ -->
+
+<!-- Contact Form (Netlify) -->
+<form class="form" name="contact" method="POST" data-netlify="true">
+    <div class="form__group">
+        <label for="name" class="form__label">Nom</label>
+        <input type="text" id="name" name="name" class="form__input" required>
+    </div>
+    
+    <div class="form__group">
+        <label for="email" class="form__label">Email</label>
+        <input type="email" id="email" name="email" class="form__input" required>
+    </div>
+    
+    <div class="form__group">
+        <label for="message" class="form__label">Message</label>
+        <textarea id="message" name="message" class="form__textarea" rows="5" required></textarea>
+    </div>
+    
+    <button type="submit" class="btn btn--primary btn--full">Envoyer</button>
+</form>
+
+<!-- Newsletter Form -->
+<form class="form form--inline" name="newsletter" method="POST" data-netlify="true">
+    <input type="email" name="email" class="form__input" placeholder="Votre email" required>
+    <button type="submit" class="btn btn--primary">S'inscrire</button>
+</form>
+
+<!-- ============================================ -->
+<!-- CTA COMPONENTS -->
+<!-- ============================================ -->
+
+<!-- CTA Banner -->
+<section class="cta">
+    <div class="container">
+        <div class="cta__content">
+            <h2 class="cta__title">{{cta_title}}</h2>
+            <p class="cta__text">{{cta_text}}</p>
+        </div>
+        <div class="cta__action">
+            <a href="{{cta_link}}" class="btn btn--primary btn--large">{{cta_button}}</a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Centered -->
+<section class="cta cta--centered">
+    <div class="container container--narrow">
+        <h2 class="cta__title">{{cta_title}}</h2>
+        <p class="cta__text">{{cta_text}}</p>
+        <a href="{{cta_link}}" class="btn btn--primary btn--large">{{cta_button}}</a>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- FOOTER COMPONENT -->
+<!-- ============================================ -->
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer__content">
+            <div class="footer__brand">
+                <h3 class="footer__logo">{{brand_name}}</h3>
+                <p class="footer__tagline">{{brand_tagline}}</p>
+            </div>
+            
+            <div class="footer__links">
+                <div class="footer__column">
+                    <h4 class="footer__title">Produits</h4>
+                    <ul class="footer__list">
+                        <li><a href="{{link}}">{{link_text}}</a></li>
+                        <li><a href="{{link}}">{{link_text}}</a></li>
+                        <li><a href="{{link}}">{{link_text}}</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column">
+                    <h4 class="footer__title">Entreprise</h4>
+                    <ul class="footer__list">
+                        <li><a href="{{link}}">{{link_text}}</a></li>
+                        <li><a href="{{link}}">{{link_text}}</a></li>
+                        <li><a href="{{link}}">{{link_text}}</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column">
+                    <h4 class="footer__title">Contact</h4>
+                    <ul class="footer__list">
+                        <li><a href="mailto:{{email}}">{{email}}</a></li>
+                        <li><a href="tel:{{phone}}">{{phone}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer__bottom">
+            <p class="footer__copyright">&copy; {{year}} {{brand_name}}. Tous droits réservés.</p>
+            <div class="footer__legal">
+                <a href="{{privacy_link}}">Confidentialité</a>
+                <a href="{{terms_link}}">Mentions légales</a>
+            </div>
+        </div>
+    </div>
+</footer>
