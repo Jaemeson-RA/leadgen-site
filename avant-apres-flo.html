@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bloc Avant / Après FLO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen w-full flex items-center justify-center bg-[#f3f7ff] px-4 py-8">
+    <main class="w-full max-w-5xl">
+      <section
+        aria-labelledby="section-title"
+        class="w-full rounded-3xl shadow-lg border border-slate-200 bg-white overflow-hidden"
+      >
+        <!-- En-tête -->
+        <header class="w-full px-6 sm:px-8 pt-6 pb-4 border-b border-slate-200 bg-white">
+          <div class="flex items-center justify-between gap-4 flex-wrap">
+            <div class="space-y-1">
+              <p
+                class="uppercase tracking-[0.2em] text-xs font-semibold text-[#2563eb]"
+              >
+                SaaS avant / après
+              </p>
+              <h2
+                id="section-title"
+                class="font-semibold text-slate-900 text-lg sm:text-xl"
+              >
+                Avant FLO, tout est manuel. Après FLO, tout est fluide.
+              </h2>
+              <p
+                class="text-sm text-slate-600 max-w-2xl"
+              >
+                En un coup d'œil, visualisez comment FLO transforme le quotidien de vos équipes.
+              </p>
+            </div>
+
+            <!-- Badge -->
+            <div
+              class="hidden sm:flex flex-col items-end rounded-2xl px-4 py-3 text-right bg-blue-50 border border-blue-200"
+            >
+              <span
+                class="text-[11px] uppercase tracking-[0.18em] font-semibold text-[#2563eb]"
+                >Impact concret</span
+              >
+              <span
+                class="mt-1 text-sm font-medium text-slate-900"
+                >+32% de productivité moyenne</span
+              >
+            </div>
+          </div>
+        </header>
+
+        <!-- Contenu Avant / Après -->
+        <div class="px-6 sm:px-8 py-6">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start"
+          >
+            <!-- Colonne Avant -->
+            <article
+              class="rounded-2xl px-5 py-5 border border-slate-200 bg-white flex flex-col gap-4"
+              aria-label="Avant FLO"
+            >
+              <header class="flex items-center gap-2">
+                <div
+                  class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold bg-blue-50 border border-blue-200 text-[#1d4ed8]"
+                >
+                  <span>Avant</span>
+                </div>
+              </header>
+
+              <div class="space-y-3">
+                <!-- Problème 1 -->
+                <div class="flex gap-3">
+                  <div
+                    class="mt-1 h-6 w-6 rounded-full flex items-center justify-center text-xs font-semibold flex-shrink-0 bg-slate-100 text-slate-600 border border-slate-300"
+                    aria-hidden="true"
+                  >
+                    1
+                  </div>
+                  <div>
+                    <h3
+                      class="font-medium text-sm mb-0.5 text-slate-900"
+                    >
+                      Process dispersés
+                    </h3>
+                    <p
+                      class="text-xs text-slate-600"
+                    >
+                      Fichiers Excel, emails et outils multiples rendent le suivi projet flou et chronophage.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Problème 2 -->
+                <div class="flex gap-3">
+                  <div
+                    class="mt-1 h-6 w-6 rounded-full flex items-center justify-center text-xs font-semibold flex-shrink-0 bg-slate-100 text-slate-600 border border-slate-300"
+                    aria-hidden="true"
+                  >
+                    2
+                  </div>
+                  <div>
+                    <h3
+                      class="font-medium text-sm mb-0.5 text-slate-900"
+                    >
+                      Données obsolètes
+                    </h3>
+                    <p
+                      class="text-xs text-slate-600"
+                    >
+                      Les chiffres ne sont jamais à jour, ce qui ralentit les décisions stratégiques.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Problème 3 -->
+                <div class="flex gap-3">
+                  <div
+                    class="mt-1 h-6 w-6 rounded-full flex items-center justify-center text-xs font-semibold flex-shrink-0 bg-slate-100 text-slate-600 border border-slate-300"
+                    aria-hidden="true"
+                  >
+                    3
+                  </div>
+                  <div>
+                    <h3
+                      class="font-medium text-sm mb-0.5 text-slate-900"
+                    >
+                      Équipe sous pression
+                    </h3>
+                    <p
+                      class="text-xs text-slate-600"
+                    >
+                      Des tâches manuelles répétitives grignotent le temps à forte valeur ajoutée.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Colonne Après -->
+            <article
+              class="rounded-2xl px-5 py-5 border border-slate-200 bg-white flex flex-col gap-4 relative overflow-hidden"
+              aria-label="Après FLO"
+            >
+              <!-- Halo décoratif -->
+              <div
+                class="pointer-events-none absolute inset-0 opacity-30"
+                aria-hidden="true"
+                style="background: radial-gradient(circle at 20% 0%, rgba(16,185,129,0.2), transparent 55%);"
+              ></div>
+
+              <header class="flex items-center gap-2 justify-between relative z-10">
+                <div
+                  class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold bg-emerald-100 border border-emerald-300 text-emerald-700"
+                >
+                  <span>Après</span>
+                </div>
+                <!-- mention retirée visuellement -->
+              </header>
+
+              <div class="space-y-3 relative z-10">
+                <!-- Solution 1 -->
+                <div class="flex gap-3">
+                  <div
+                    class="mt-1 h-6 w-6 rounded-full flex items-center justify-center text-xs font-semibold flex-shrink-0 bg-emerald-50 text-emerald-600 border border-emerald-300"
+                    aria-hidden="true"
+                  >
+                    ✓
+                  </div>
+                  <div>
+                    <h3
+                      class="font-medium text-sm mb-0.5 text-slate-900"
+                    >
+                      Un seul hub central
+                    </h3>
+                    <p
+                      class="text-xs text-slate-600"
+                    >
+                      Tous vos projets, équipes et indicateurs clés dans une interface unique, en temps réel.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Solution 2 -->
+                <div class="flex gap-3">
+                  <div
+                    class="mt-1 h-6 w-6 rounded-full flex items-center justify-center text-xs font-semibold flex-shrink-0 bg-emerald-50 text-emerald-600 border border-emerald-300"
+                    aria-hidden="true"
+                  >
+                    ✓
+                  </div>
+                  <div>
+                    <h3
+                      class="font-medium text-sm mb-0.5 text-slate-900"
+                    >
+                      Reporting automatisé
+                    </h3>
+                    <p
+                      class="text-xs text-slate-600"
+                    >
+                      Dashboards prêts à l’emploi, mis à jour automatiquement, pour décider en quelques minutes.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Solution 3 -->
+                <div class="flex gap-3">
+                  <div
+                    class="mt-1 h-6 w-6 rounded-full flex items-center justify-center text-xs font-semibold flex-shrink-0 bg-emerald-50 text-emerald-600 border border-emerald-300"
+                    aria-hidden="true"
+                  >
+                    ✓
+                  </div>
+                  <div>
+                    <h3
+                      class="font-medium text-sm mb-0.5 text-slate-900"
+                    >
+                      Équipe libérée
+                    </h3>
+                    <p
+                      class="text-xs text-slate-600"
+                    >
+                      Des automatisations intelligentes qui rendent aux équipes plusieurs heures par semaine.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CTA -->
+              <footer
+                class="mt-4 pt-4 border-t border-slate-200 flex flex-col gap-2 relative z-10"
+              >
+                <button
+                  type="button"
+                  class="inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-semibold bg-emerald-500 text-white shadow-md hover:shadow-lg hover:bg-emerald-600 transition-all duration-150 self-start"
+                >
+                  Voir un scénario client
+                  <span class="ml-2 text-base" aria-hidden="true">→</span>
+                </button>
+                <p
+                  class="text-[11px] text-slate-500"
+                >
+                  Aucun engagement, démo personnalisée en moins de 30 minutes.
+                </p>
+              </footer>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
