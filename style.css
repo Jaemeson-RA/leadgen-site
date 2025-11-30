@@ -1718,3 +1718,30 @@ button {
 /* ============================================ */
 /* CARROUSEL 3D TÉMOIGNAGES - FIN */
 /* ============================================ */
+
+/* ============================================ */
+/* AJUSTEMENTS BOUTONS CTA */
+/* ============================================ */
+
+.btn {
+    gap: 0.625rem !important;
+    white-space: nowrap;
+    line-height: 1.2;
+}
+
+.btn i {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.btn--large {
+    padding: 1rem 1.75rem !important;
+    font-size: 1.0625rem !important;
+    gap: 0.75rem !important;
+}
+
+.btn--large i {
+    width: 22px;
+    height: 22px;
+}
