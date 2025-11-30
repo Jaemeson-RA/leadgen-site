@@ -605,48 +605,77 @@ button {
 }
 
 /* ============================================ */
-/* HOW IT WORKS */
+/* HOW IT WORKS - VERSION CARTES FLIP */
 /* ============================================ */
 
-.steps {
+.steps-cards {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     gap: var(--spacing-xl);
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-.step {
+.step-card {
     flex: 1;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 320px;
+    height: 400px;
+    perspective: 1000px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.step__content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.step-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Délai d'apparition progressif */
+.step-card[data-step="1"] { transition-delay: 0.1s; }
+.step-card[data-step="2"] { transition-delay: 0.3s; }
+.step-card[data-step="3"] { transition-delay: 0.5s; }
+
+.step-card__inner {
+    position: relative;
     width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
 }
 
-.step__number {
-    width: 60px;
-    height: 60px;
-    background: var(--color-primary);
-    color: var(--color-white);
-    border-radius: 50%;
+/* Effet flip au hover sur desktop */
+@media (hover: hover) and (pointer: fine) {
+    .step-card:hover .step-card__inner {
+        transform: rotateY(180deg);
+    }
+}
+
+.step-card__front,
+.step-card__back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+    border: 2px solid #e2e8f0;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 0 auto var(--spacing-md);
+    text-align: center;
+    gap: var(--spacing-md);
 }
 
-.step__icon {
+.step-card__back {
+    transform: rotateY(180deg);
+    justify-content: center;
+}
+
+.step-card__icon {
     width: 80px;
     height: 80px;
     background: rgba(74, 144, 226, 0.1);
@@ -655,19 +684,42 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto var(--spacing-md);
     font-size: 2rem;
 }
 
-.step__title {
+.step-card__title {
     font-size: 1.5rem;
-    margin-bottom: var(--spacing-sm);
+    margin: 0;
     color: var(--color-dark);
+    font-weight: 700;
 }
 
-.step__text {
+.step-card__text {
     color: var(--color-gray);
     line-height: 1.6;
+    font-size: 0.9375rem;
+}
+
+.step-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: left;
+}
+
+.step-card__list li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-dark);
+    font-size: 0.9375rem;
+}
+
+.step-card__list i {
+    color: var(--color-success);
+    flex-shrink: 0;
 }
 
 .step__arrow {
@@ -676,19 +728,72 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    align-self: center;
-    margin-top: 0;
 }
 
+/* RESPONSIVE TABLETTE */
 @media (max-width: 992px) {
-    .steps {
+    .steps-cards {
         flex-direction: column;
-        align-items: center;
+        gap: var(--spacing-lg);
+    }
+    
+    .step-card {
+        max-width: 400px;
+        width: 100%;
     }
     
     .step__arrow {
         transform: rotate(90deg);
-        margin: var(--spacing-md) 0;
+        margin: var(--spacing-sm) 0;
+    }
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 768px) {
+    .step-card {
+        height: 420px;
+    }
+    
+    /* Sur mobile : carrousel interne au lieu de flip */
+    .step-card__inner {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .step-card__front,
+    .step-card__back {
+        position: absolute;
+        backface-visibility: visible;
+        transition: transform 0.3s ease-out;
+    }
+    
+    .step-card__front {
+        transform: translateX(0);
+    }
+    
+    .step-card__back {
+        transform: translateX(100%) rotateY(0deg);
+    }
+    
+    /* État actif du carrousel */
+    .step-card__inner.show-back .step-card__front {
+        transform: translateX(-100%);
+    }
+    
+    .step-card__inner.show-back .step-card__back {
+        transform: translateX(0) rotateY(0deg);
+    }
+    
+    /* Indicateurs de slides mobiles */
+    .step-card__inner::after {
+        content: '';
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 6px;
+        z-index: 10;
     }
 }
 
@@ -1544,8 +1649,7 @@ button {
 
 .flo-testimonials-dot--active {
     background: var(--color-primary);
-    width: 32px;
-    border-radius: 6px;
+    transform: scale(1.3);
 }
 
 .flo-testimonials-dot:focus {

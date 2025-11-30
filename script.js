@@ -498,19 +498,25 @@ function initMobileDotsNavigation() {
     
     if (!dotsContainer || !prevBtn || !nextBtn) return;
     
-    // Ajouter les gestionnaires de clics sur les pseudo-éléments via le container
-    dotsContainer.addEventListener('click', (e) => {
-        const rect = dotsContainer.getBoundingClientRect();
-        const clickX = e.clientX - rect.left;
-        
-        // Si clic à gauche (avant les dots)
-        if (clickX < 50) {
-            prevBtn.click();
-        }
-        // Si clic à droite (après les dots)
-        else if (clickX > rect.width - 50) {
-            nextBtn.click();
-        }
+    // Créer des zones cliquables invisibles pour les flèches
+    const leftArrow = document.createElement('div');
+    const rightArrow = document.createElement('div');
+    
+    leftArrow.style.cssText = 'position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; cursor: pointer; z-index: 10;';
+    rightArrow.style.cssText = 'position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; cursor: pointer; z-index: 10;';
+    
+    dotsContainer.style.position = 'relative';
+    dotsContainer.appendChild(leftArrow);
+    dotsContainer.appendChild(rightArrow);
+    
+    leftArrow.addEventListener('click', (e) => {
+        e.stopPropagation();
+        prevBtn.click();
+    });
+    
+    rightArrow.addEventListener('click', (e) => {
+        e.stopPropagation();
+        nextBtn.click();
     });
 }
 
@@ -518,3 +524,66 @@ function initMobileDotsNavigation() {
 if (window.innerWidth <= 768) {
     document.addEventListener('DOMContentLoaded', initMobileDotsNavigation);
 }
+
+// ============================================
+// ANIMATION APPARITION CARTES "COMMENT ÇA MARCHE"
+// ============================================
+
+function initStepCardsAnimation() {
+    const stepCards = document.querySelectorAll('.step-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+    
+    stepCards.forEach(card => observer.observe(card));
+}
+
+document.addEventListener('DOMContentLoaded', initStepCardsAnimation);
+
+// ============================================
+// SWIPE MOBILE POUR CARTES "COMMENT ÇA MARCHE"
+// ============================================
+
+function initStepCardsSwipe() {
+    if (window.innerWidth > 768) return; // Desktop seulement flip
+    
+    const stepCards = document.querySelectorAll('.step-card__inner');
+    
+    stepCards.forEach(card => {
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        card.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        card.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe(card);
+        }, { passive: true });
+        
+        function handleSwipe(element) {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe gauche - montrer le verso
+                    element.classList.add('show-back');
+                } else {
+                    // Swipe droite - montrer le recto
+                    element.classList.remove('show-back');
+                }
+            }
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initStepCardsSwipe);
