@@ -778,7 +778,7 @@ button {
     }
     
     .step-card__front {
-        display: block;
+        display: flex;
     }
     
     .step-card__back {
@@ -806,32 +806,6 @@ button {
     
     .step-card__text {
         font-size: 0.875rem;
-    }
-    
-    /* Indicateurs de swipe sur mobile */
-    .step-card__indicators {
-        display: flex;
-        gap: 6px;
-        justify-content: center;
-        margin-top: var(--spacing-md);
-    }
-    
-    .step-card__indicator {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: #d1d5db;
-        transition: all 0.3s ease;
-    }
-    
-    .step-card__inner.show-back .step-card__indicator:last-child {
-        background: var(--color-primary);
-        transform: scale(1.3);
-    }
-    
-    .step-card__inner:not(.show-back) .step-card__indicator:first-child {
-        background: var(--color-primary);
-        transform: scale(1.3);
     }
 }
 
