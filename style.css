@@ -766,32 +766,37 @@ button {
         overflow: visible;
         height: auto;
         min-height: 420px;
+        transform: none !important;
     }
     
     .step-card__front,
     .step-card__back {
         position: relative;
         backface-visibility: visible;
-        transition: transform 0.3s ease-out;
-        transform: none;
+        transition: opacity 0.3s ease-out;
+        transform: none !important;
         height: auto;
     }
     
     .step-card__front {
         display: flex;
+        opacity: 1;
     }
     
     .step-card__back {
         display: none;
+        opacity: 0;
     }
     
-    /* État actif du carrousel */
+    /* État actif du carrousel - Afficher le verso */
     .step-card__inner.show-back .step-card__front {
         display: none;
+        opacity: 0;
     }
     
     .step-card__inner.show-back .step-card__back {
         display: flex;
+        opacity: 1;
     }
     
     .step-card__icon {
@@ -805,6 +810,14 @@ button {
     }
     
     .step-card__text {
+        font-size: 0.875rem;
+    }
+    
+    .step-card__list {
+        text-align: left;
+    }
+    
+    .step-card__list li {
         font-size: 0.875rem;
     }
 }
