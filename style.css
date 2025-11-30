@@ -676,6 +676,8 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    align-self: center;
+    margin-top: 0;
 }
 
 @media (max-width: 992px) {
@@ -1623,6 +1625,11 @@ button {
         gap: 10px;
     }
     
+    /* Masquer les boutons de navigation sur mobile */
+    .flo-testimonials-nav {
+        display: none;
+    }
+    
     .flo-testimonials-track {
         height: 550px;
     }
@@ -1638,11 +1645,6 @@ button {
         opacity: 0;
         transform: translateX(0%) scale(0.8);
         pointer-events: none;
-    }
-    
-    .flo-testimonials-nav {
-        width: 40px;
-        height: 40px;
     }
     
     /* Ajustements texte mobile */
@@ -1662,6 +1664,41 @@ button {
     
     .flo-testimonials-carousel .testimonial-card__title {
         font-size: 0.8rem;
+    }
+    
+    /* Navigation avec flèches autour des dots */
+    .flo-testimonials-dots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        position: relative;
+    }
+    
+    .flo-testimonials-dots::before,
+    .flo-testimonials-dots::after {
+        content: '';
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        color: var(--color-primary);
+        cursor: pointer;
+        font-family: monospace;
+    }
+    
+    .flo-testimonials-dots::before {
+        content: '‹';
+        font-size: 2rem;
+        margin-right: 8px;
+    }
+    
+    .flo-testimonials-dots::after {
+        content: '›';
+        font-size: 2rem;
+        margin-left: 8px;
     }
 }
 

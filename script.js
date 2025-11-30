@@ -486,3 +486,35 @@ function initScrollToTop() {
 console.log('%cFLO SaaS', 'font-size: 24px; font-weight: bold; color: #4A90E2;');
 console.log('%cCentralisez vos process internes', 'font-size: 14px; color: #6B7280;');
 console.log('%c🚀 Créé avec le système de template master', 'font-size: 12px; color: #20C997;');
+
+// ============================================
+// NAVIGATION MOBILE DOTS (< et >) 
+// ============================================
+
+function initMobileDotsNavigation() {
+    const dotsContainer = document.getElementById('flo-testimonials-dots');
+    const prevBtn = document.getElementById('flo-carousel-prev');
+    const nextBtn = document.getElementById('flo-carousel-next');
+    
+    if (!dotsContainer || !prevBtn || !nextBtn) return;
+    
+    // Ajouter les gestionnaires de clics sur les pseudo-éléments via le container
+    dotsContainer.addEventListener('click', (e) => {
+        const rect = dotsContainer.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        
+        // Si clic à gauche (avant les dots)
+        if (clickX < 50) {
+            prevBtn.click();
+        }
+        // Si clic à droite (après les dots)
+        else if (clickX > rect.width - 50) {
+            nextBtn.click();
+        }
+    });
+}
+
+// Initialiser la navigation mobile au chargement
+if (window.innerWidth <= 768) {
+    document.addEventListener('DOMContentLoaded', initMobileDotsNavigation);
+}
