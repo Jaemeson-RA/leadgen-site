@@ -552,29 +552,42 @@ document.addEventListener('DOMContentLoaded', initStepCardsAnimation);
 // ============================================
 
 function initStepCardsSwipe() {
-    if (window.innerWidth > 768) return; // Desktop seulement flip
+    if (window.innerWidth > 768) return; // Desktop uniquement flip
     
     const stepCards = document.querySelectorAll('.step-card__inner');
     
     stepCards.forEach(card => {
         let touchStartX = 0;
         let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
         
+        // Touch events pour swipe
         card.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
         }, { passive: true });
         
         card.addEventListener('touchend', (e) => {
             touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
             handleSwipe(card);
         }, { passive: true });
         
+        // Click event pour toggle simple
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
+            card.classList.toggle('show-back');
+        });
+        
         function handleSwipe(element) {
             const swipeThreshold = 50;
-            const diff = touchStartX - touchEndX;
+            const diffX = touchStartX - touchEndX;
+            const diffY = Math.abs(touchStartY - touchEndY);
             
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
+            // Vérifier que c'est un swipe horizontal et pas vertical
+            if (diffY < 50 && Math.abs(diffX) > swipeThreshold) {
+                if (diffX > 0) {
                     // Swipe gauche - montrer le verso
                     element.classList.add('show-back');
                 } else {
