@@ -220,6 +220,36 @@ button {
     .nav__toggle {
         display: flex;
     }
+    
+    /* Bouton Démo flottant sur mobile */
+    .nav .btn--primary {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 999;
+        box-shadow: 0 4px 12px rgba(32, 201, 151, 0.4);
+        padding: 0.75rem 1.25rem;
+    }
+    
+    /* Afficher texte mobile, cacher texte desktop */
+    .btn__text-desktop {
+        display: none;
+    }
+    
+    .btn__text-mobile {
+        display: inline;
+    }
+}
+
+/* Desktop: texte normal */
+@media (min-width: 769px) {
+    .btn__text-desktop {
+        display: inline;
+    }
+    
+    .btn__text-mobile {
+        display: none;
+    }
 }
 
 /* ============================================ */
