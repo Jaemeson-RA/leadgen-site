@@ -775,7 +775,8 @@ button {
     position: relative;
     width: 100%;
     height: 420px;
-    overflow: hidden;
+    overflow: visible;
+    padding-top: 10px;
 }
 
 /* Faces des cartes */
