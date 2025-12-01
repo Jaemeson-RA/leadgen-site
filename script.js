@@ -73,11 +73,11 @@ if (howItWorksSection) {
         activateCard(0);
         currentActiveIndex = 0;
         
-        // Boucle toutes les 2000ms (comme la vidéo)
+        // Boucle toutes les 1200ms (plus rapide que la vidéo)
         waveInterval = setInterval(() => {
             currentActiveIndex = (currentActiveIndex + 1) % cards.length;
             activateCard(currentActiveIndex);
-        }, 800);
+        }, 1200);
     }
     
     // Fonction pour arrêter la vague
