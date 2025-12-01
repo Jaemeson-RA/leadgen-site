@@ -725,12 +725,12 @@ button {
 
 
 /* ============================================ */
-/* COMMENT ÇA MARCHE - EFFET BLEU PROGRESSIF */
+/* COMMENT ÇA MARCHE - EFFET BLEU (CORRIGÉ) */
 /* ============================================ */
 
 .how-it-works {
     background: var(--color-white);
-    overflow: visible;
+    overflow: hidden; /* PAS DE SCROLLBAR */
 }
 
 .steps-cards {
@@ -740,6 +740,7 @@ button {
     gap: var(--spacing-xl);
     max-width: 1100px;
     margin: 0 auto;
+    overflow: hidden; /* PAS DE SCROLLBAR */
 }
 
 /* Flèches */
@@ -747,7 +748,7 @@ button {
     color: var(--color-primary);
     font-size: 2rem;
     flex-shrink: 0;
-    transition: all 0.6s ease;
+    transition: all 0.4s ease;
     opacity: 0.5;
 }
 
@@ -767,7 +768,7 @@ button {
     max-width: 320px;
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.6s ease;
+    transition: all 0.4s ease; /* PLUS RAPIDE */
 }
 
 .step-card.visible {
@@ -775,17 +776,17 @@ button {
     transform: translateY(0);
 }
 
-/* Délais d'apparition */
+/* Délais d'apparition - PLUS RAPIDES */
 .step-card[data-step="1"] {
     transition-delay: 0s;
 }
 
 .step-card[data-step="2"] {
-    transition-delay: 0.6s;
+    transition-delay: 0.3s; /* Était 0.6s */
 }
 
 .step-card[data-step="3"] {
-    transition-delay: 1.2s;
+    transition-delay: 0.6s; /* Était 1.2s */
 }
 
 /* Inner container */
@@ -794,6 +795,7 @@ button {
     width: 100%;
     height: 420px;
     perspective: 1000px;
+    overflow: hidden; /* PAS DE SCROLLBAR */
 }
 
 /* Faces des cartes - DÉSACTIVER LE FLIP */
@@ -803,7 +805,7 @@ button {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* PLUS RAPIDE */
     background: var(--color-white);
     border: 2px solid #e2e8f0;
     border-radius: var(--radius-lg);
@@ -812,6 +814,7 @@ button {
     flex-direction: column;
     gap: var(--spacing-md);
     box-shadow: var(--shadow-md);
+    overflow: hidden; /* PAS DE SCROLLBAR */
 }
 
 /* CACHER LE VERSO PAR DÉFAUT */
@@ -831,10 +834,10 @@ button {
     text-align: center;
 }
 
-/* EFFET BLEU PROGRESSIF - Appliqué au front */
+/* EFFET BLEU - COULEUR UNIE (pas de dégradé) */
 .step-card.active .step-card__front {
-    background: linear-gradient(135deg, var(--color-primary), #5BA3E8);
-    border-color: var(--color-primary);
+    background: #4A90E2; /* BLEU UNI comme le bouton */
+    border-color: #4A90E2;
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 20px 40px rgba(74, 144, 226, 0.3);
 }
@@ -856,13 +859,13 @@ button {
     justify-content: center;
     color: var(--color-white);
     margin-bottom: var(--spacing-sm);
-    transition: all 0.6s ease;
+    transition: all 0.4s ease; /* PLUS RAPIDE */
 }
 
 /* Icône inversée quand activé */
 .step-card.active .step-card__icon {
     background: var(--color-white);
-    color: var(--color-primary);
+    color: #4A90E2;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
@@ -876,7 +879,7 @@ button {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--color-dark);
-    transition: color 0.6s ease;
+    transition: color 0.4s ease; /* PLUS RAPIDE */
 }
 
 /* Texte */
@@ -884,7 +887,7 @@ button {
     font-size: 1rem;
     line-height: 1.6;
     color: var(--color-gray);
-    transition: color 0.6s ease;
+    transition: color 0.4s ease; /* PLUS RAPIDE */
 }
 
 /* Liste (cachée sur le recto) */

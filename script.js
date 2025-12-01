@@ -44,7 +44,7 @@ if (navToggle) {
 }
 
 // ============================================
-// COMMENT ÇA MARCHE - ACTIVATION PROGRESSIVE BLEUE
+// COMMENT ÇA MARCHE - ACTIVATION PROGRESSIVE BLEUE (RAPIDE)
 // ============================================
 const observerOptions = {
     threshold: 0.3,
@@ -60,14 +60,14 @@ if (howItWorksSection) {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Apparition des cartes
+                // Apparition des cartes - PLUS RAPIDE
                 cards.forEach((card, index) => {
                     setTimeout(() => {
                         card.classList.add('visible');
-                    }, index * 600);
+                    }, index * 300); // Était 600ms, maintenant 300ms
                 });
                 
-                // Activation progressive en BLEU
+                // Activation progressive en BLEU - PLUS RAPIDE
                 cards.forEach((card, index) => {
                     setTimeout(() => {
                         card.classList.add('active');
@@ -75,7 +75,7 @@ if (howItWorksSection) {
                         if (arrows[index]) {
                             arrows[index].classList.add('active');
                         }
-                    }, 1000 + (index * 800)); // Commence après 1s, puis 800ms entre chaque
+                    }, 500 + (index * 500)); // Était 1000 + 800ms, maintenant 500 + 500ms
                 });
                 
                 observer.unobserve(entry.target);
