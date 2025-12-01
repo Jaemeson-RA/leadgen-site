@@ -29,14 +29,12 @@ if (navToggle) {
         navMenu.classList.toggle('active');
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', function(event) {
         if (!navToggle.contains(event.target) && !navMenu.contains(event.target)) {
             navMenu.classList.remove('active');
         }
     });
 
-    // Close menu when clicking on a link
     const navLinks = navMenu.querySelectorAll('a');
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -46,40 +44,47 @@ if (navToggle) {
 }
 
 // ============================================
-// STEP CARDS - TOGGLE RECTO/VERSO
+// COMMENT ÇA MARCHE - ACTIVATION PROGRESSIVE
 // ============================================
-const stepCards = document.querySelectorAll('.step-card');
+const observerOptions = {
+    threshold: 0.3,
+    rootMargin: '0px'
+};
 
-stepCards.forEach(card => {
-    const inner = card.querySelector('.step-card__inner');
-    const toggleDots = card.querySelectorAll('.toggle-dot');
+const howItWorksSection = document.querySelector('.how-it-works');
+
+if (howItWorksSection) {
+    const cards = howItWorksSection.querySelectorAll('.how-it-works__card');
+    const arrows = howItWorksSection.querySelectorAll('.how-it-works__arrow');
     
-    toggleDots.forEach(dot => {
-        dot.addEventListener('click', function() {
-            const targetFace = this.getAttribute('data-face');
-            
-            // Toggle flip state
-            if (targetFace === 'back') {
-                inner.classList.add('flipped');
-            } else {
-                inner.classList.remove('flipped');
-            }
-            
-            // Update active dots
-            const parentFace = this.closest('.step-card__face');
-            const allDotsInCard = card.querySelectorAll('.toggle-dot');
-            
-            allDotsInCard.forEach(d => d.classList.remove('active'));
-            
-            // Activate correct dots
-            if (targetFace === 'back') {
-                card.querySelectorAll('[data-face="back"]').forEach(d => d.classList.add('active'));
-            } else {
-                card.querySelectorAll('[data-face="front"]').forEach(d => d.classList.add('active'));
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Apparition des cartes
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, index * 600);
+                });
+                
+                // Activation progressive en BLEU
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('active');
+                        // Activer la flèche correspondante
+                        if (arrows[index]) {
+                            arrows[index].classList.add('active');
+                        }
+                    }, 1000 + (index * 800)); // Commence après 1s, puis 800ms entre chaque
+                });
+                
+                observer.unobserve(entry.target);
             }
         });
-    });
-});
+    }, observerOptions);
+    
+    observer.observe(howItWorksSection);
+}
 
 // ============================================
 // PRICING SIMULATOR
@@ -137,19 +142,16 @@ function updateCarousel() {
         const offset = index - currentIndex;
         const absOffset = Math.abs(offset);
         
-        // Position
         let translateX = offset * 110;
         let translateZ = -absOffset * 200;
         let scale = 1 - (absOffset * 0.2);
         let opacity = absOffset === 0 ? 1 : 0.5;
         let zIndex = totalSlides - absOffset;
         
-        // Apply transforms
         slide.style.transform = `translateX(${translateX}%) translateZ(${translateZ}px) scale(${scale})`;
         slide.style.opacity = opacity;
         slide.style.zIndex = zIndex;
         
-        // Active class
         if (absOffset === 0) {
             slide.classList.add('active');
         } else {
@@ -157,7 +159,6 @@ function updateCarousel() {
         }
     });
     
-    // Update dots
     dots.forEach((dot, index) => {
         if (index === currentIndex) {
             dot.classList.add('flo-testimonials-dot--active');
@@ -191,11 +192,9 @@ function stopAutoplay() {
 }
 
 if (track) {
-    // Initialize
     updateCarousel();
     startAutoplay();
     
-    // Navigation buttons
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
             stopAutoplay();
@@ -212,7 +211,6 @@ if (track) {
         });
     }
     
-    // Dots navigation
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             stopAutoplay();
@@ -221,7 +219,6 @@ if (track) {
         });
     });
     
-    // Pause on hover
     track.addEventListener('mouseenter', stopAutoplay);
     track.addEventListener('mouseleave', startAutoplay);
 }
@@ -234,18 +231,15 @@ const faqItems = document.querySelectorAll('.faq-item');
 faqItems.forEach(item => {
     const question = item.querySelector('.faq-item__question');
     const answer = item.querySelector('.faq-item__answer');
-    const icon = item.querySelector('.faq-item__icon');
     
     question.addEventListener('click', () => {
         const isOpen = item.classList.contains('active');
         
-        // Close all items
         faqItems.forEach(i => {
             i.classList.remove('active');
             i.querySelector('.faq-item__answer').style.maxHeight = null;
         });
         
-        // Open clicked item if it was closed
         if (!isOpen) {
             item.classList.add('active');
             answer.style.maxHeight = answer.scrollHeight + 'px';
@@ -260,7 +254,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
         
-        // Skip if href is just "#"
         if (href === '#') {
             e.preventDefault();
             return;
@@ -279,25 +272,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         }
     });
-});
-
-// ============================================
-// INTERSECTION OBSERVER FOR ANIMATIONS
-// ============================================
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-// Observe all fade-in elements
-document.querySelectorAll('.fade-in, .fade-in-step').forEach(el => {
-    observer.observe(el);
 });
