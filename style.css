@@ -55,9 +55,17 @@
     box-sizing: border-box;
 }
 
+/* Prévenir le scroll horizontal sur tous les éléments */
+*, *::before, *::after {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
 html {
     font-size: 16px;
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
@@ -66,6 +74,9 @@ body {
     color: var(--color-dark);
     background-color: var(--color-white);
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    position: relative;
 }
 
 img {
@@ -96,6 +107,7 @@ button {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--spacing-lg);
+    overflow-x: hidden;
 }
 
 /* ============================================ */
@@ -104,6 +116,8 @@ button {
 
 .section {
     padding: var(--spacing-xxl) 0;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .section--bg {
@@ -366,122 +380,52 @@ button {
 }
 
 /* Mockup CSS */
-.mockup {
-    perspective: 1000px;
-}
-
-.mockup__window {
-    background: var(--color-white);
+.hero__video-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-xl);
     overflow: hidden;
-    transform: rotateY(-5deg);
-    transition: transform var(--transition-slow);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    background: var(--color-dark);
 }
 
-.mockup:hover .mockup__window {
-    transform: rotateY(0deg);
+.hero__video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-lg);
 }
 
-.mockup__header {
-    display: flex;
-    gap: 6px;
-    padding: var(--spacing-sm);
-    background: #f0f0f0;
+/* Animation d'apparition de la vidéo */
+.hero__visual {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out 0.3s forwards;
 }
 
-.mockup__header span {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #ddd;
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.mockup__header span:nth-child(1) { background: #ff5f56; }
-.mockup__header span:nth-child(2) { background: #ffbd2e; }
-.mockup__header span:nth-child(3) { background: #27c93f; }
-
-.mockup__content {
-    display: flex;
-    height: 400px;
-    background: #fafafa;
-}
-
-.mockup__sidebar {
-    width: 200px;
-    background: var(--color-white);
-    padding: var(--spacing-md);
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-}
-
-.mockup__item {
-    height: 40px;
-    background: #e5e7eb;
-    border-radius: var(--radius-sm);
-    animation: pulse 2s ease-in-out infinite;
-}
-
-.mockup__item--active {
-    background: var(--color-primary);
-}
-
-.mockup__main {
-    flex: 1;
-    padding: var(--spacing-lg);
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-md);
-}
-
-.mockup__card {
-    background: var(--color-white);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-}
-
+/* Responsive */
 @media (max-width: 992px) {
-    .hero .container {
-        grid-template-columns: 1fr;
-    }
-    
-    .hero__title {
-        font-size: 2.5rem;
-    }
-    
-    .mockup__content {
-        height: 300px;
+    .hero__video-container {
+        max-width: 500px;
     }
 }
 
 @media (max-width: 768px) {
-    .hero {
-        padding: 4rem 0 3rem;
-    }
-    
-    .hero__title {
-        font-size: 2rem;
-    }
-    
-    .hero__cta {
-        flex-direction: column;
-    }
-    
-    .mockup__sidebar {
-        width: 80px;
-        padding: var(--spacing-sm);
-    }
-    
-    .mockup__main {
-        grid-template-columns: 1fr;
+    .hero__video-container {
+        max-width: 100%;
+        border-radius: var(--radius-md);
     }
 }
+
 
 /* ============================================ */
 /* PROBLEMES → SOLUTIONS */

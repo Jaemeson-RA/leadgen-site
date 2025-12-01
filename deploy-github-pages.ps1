@@ -26,4 +26,4 @@ git push origin gh-pages
 git checkout $currentBranch
 
 Write-Host "✅ Déploiement terminé sur GitHub Pages !" -ForegroundColor Green
-Write-Host "🌐 Site disponible sur: https://jaemeson-rv.github.io/leadgen-site/" -ForegroundColor Cyan
+Write-Host "🌐 Site disponible sur: https://jaemeson-ra.github.io/leadgen-site/" -ForegroundColor Cyan

@@ -35,7 +35,7 @@ switch ($choice) {
         git commit -m "Deploy: $message"
         git push origin gh-pages
         git checkout master
-        Write-Host "✅ Déployé sur https://jaemeson-rv.github.io/leadgen-site/" -ForegroundColor Green
+        Write-Host "✅ Déployé sur https://jaemeson-ra.github.io/leadgen-site/" -ForegroundColor Green
     }
     "2" {
         Write-Host "`n🔺 Déploiement sur Vercel..." -ForegroundColor Cyan
