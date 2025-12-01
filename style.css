@@ -815,7 +815,8 @@ button {
 /* ÉTAT ACTIF - BLEU UNI */
 .step-card.active .step-card__front {
     background: #4A90E2;
-    border-color: #4A90E2;
+    border: 2px solid #4A90E2;
+    border-radius: 24px;
     transform: translateY(-8px);
     box-shadow: 0 12px 32px rgba(74, 144, 226, 0.35);
 }
