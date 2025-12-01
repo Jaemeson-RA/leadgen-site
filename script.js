@@ -44,7 +44,7 @@ if (navToggle) {
 }
 
 // ============================================
-// COMMENT ÇA MARCHE - ACTIVATION PROGRESSIVE
+// COMMENT ÇA MARCHE - ACTIVATION PROGRESSIVE BLEUE
 // ============================================
 const observerOptions = {
     threshold: 0.3,
@@ -54,8 +54,8 @@ const observerOptions = {
 const howItWorksSection = document.querySelector('.how-it-works');
 
 if (howItWorksSection) {
-    const cards = howItWorksSection.querySelectorAll('.how-it-works__card');
-    const arrows = howItWorksSection.querySelectorAll('.how-it-works__arrow');
+    const cards = howItWorksSection.querySelectorAll('.step-card');
+    const arrows = howItWorksSection.querySelectorAll('.step__arrow');
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
