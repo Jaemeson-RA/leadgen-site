@@ -77,7 +77,7 @@ if (howItWorksSection) {
         waveInterval = setInterval(() => {
             currentActiveIndex = (currentActiveIndex + 1) % cards.length;
             activateCard(currentActiveIndex);
-        }, 1200);
+        }, 1500);
     }
     
     // Fonction pour arrêter la vague
