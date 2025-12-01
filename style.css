@@ -45,30 +45,23 @@
     --transition-slow: 500ms ease-in-out;
 }
 /* ============================================ */
-/* CORRECTIONS GLOBALES - SCROLLBAR */
+/* CORRECTIONS GLOBALES */
 /* ============================================ */
 
-html {
-    overflow-x: hidden;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-}
-
-html::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
-}
-
-body {
+/* Scroll uniquement sur la page entière */
+html, body {
     overflow-x: hidden;
 }
 
-* {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+/* Sections sans scroll interne */
+.section {
+    overflow: visible !important;
+    max-height: none !important;
 }
 
-*::-webkit-scrollbar {
-    display: none;
+/* Container sans scroll */
+.container {
+    overflow: visible !important;
 }
 
 
@@ -756,11 +749,7 @@ button {
 
 .how-it-works {
     background: var(--color-white);
-    overflow: hidden !important;
-}
-
-.how-it-works .container {
-    overflow: visible;
+    overflow: visible !important;
 }
 
 .steps-cards {
@@ -2280,32 +2269,28 @@ button {
 }
 
 /* ============================================ */
-/* PRICING - ESPACEMENT RÉDUIT */
+/* PRICING - ESPACEMENT MINIMAL */
 /* ============================================ */
 
 #tarifs.section,
 .pricing.section {
-    padding-top: var(--spacing-3xl);
-    padding-bottom: var(--spacing-xl) !important;
+    padding-bottom: 20px !important;
     margin-bottom: 0 !important;
-}
-
-.pricing .container {
-    padding-bottom: 0;
-}
-
-.pricing-card {
-    margin-bottom: 0;
+    overflow: visible !important;
 }
 
 
 /* ============================================ */
-/* TÉMOIGNAGES - CARROUSEL AMÉLIORÉ */
+/* TÉMOIGNAGES - CARROUSEL CENTRÉ */
 /* ============================================ */
 
 .flo-testimonials {
-    overflow: hidden !important;
+    overflow: visible !important;
     padding: var(--spacing-3xl) 0;
+}
+
+.flo-testimonials .container {
+    overflow: visible !important;
 }
 
 .flo-testimonials-carousel-wrapper {
@@ -2314,18 +2299,18 @@ button {
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 0 80px; /* Espace pour les flèches */
 }
 
 .flo-testimonials-carousel {
     position: relative;
     width: 100%;
-    max-width: 800px;
-    height: 400px;
+    max-width: 600px;
+    height: 350px;
     perspective: 1000px;
     overflow: visible;
+    margin: 0 auto;
 }
 
 .flo-testimonials-track {
@@ -2337,31 +2322,30 @@ button {
 
 .flo-testimonials-slide {
     position: absolute;
-    width: 100%;
-    max-width: 500px;
+    width: 90%;
+    max-width: 450px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     background: var(--color-white);
-    border-radius: 20px;
+    border-radius: 16px;
     padding: var(--spacing-xl);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid #f0f0f0;
+    border: 1px solid #e2e8f0;
 }
 
 .flo-testimonials-slide.active {
-    box-shadow: 0 20px 60px rgba(74, 144, 226, 0.2);
-    border-color: var(--color-primary);
+    box-shadow: 0 15px 50px rgba(74, 144, 226, 0.15);
 }
 
-/* FLÈCHES - POSITIONNÉES À L'EXTÉRIEUR */
+/* FLÈCHES - POSITIONNÉES SUR LES CÔTÉS */
 .flo-testimonials-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     background: var(--color-white);
     border: 2px solid #e2e8f0;
@@ -2377,16 +2361,18 @@ button {
 .flo-testimonials-nav:hover {
     background: var(--color-primary);
     border-color: var(--color-primary);
+}
+
+.flo-testimonials-nav:hover i {
     color: white;
-    transform: translateY(-50%) scale(1.1);
 }
 
 .flo-testimonials-nav--prev {
-    left: 0;
+    left: -70px;
 }
 
 .flo-testimonials-nav--next {
-    right: 0;
+    right: -70px;
 }
 
 .flo-testimonials-nav i {
@@ -2396,11 +2382,7 @@ button {
     transition: color 0.3s ease;
 }
 
-.flo-testimonials-nav:hover i {
-    color: white;
-}
-
-/* DOTS */
+/* DOTS - CENTRÉS */
 .flo-testimonials-dots {
     display: flex;
     justify-content: center;
@@ -2409,8 +2391,8 @@ button {
 }
 
 .flo-testimonials-dot {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: #e2e8f0;
     cursor: pointer;
@@ -2420,48 +2402,19 @@ button {
 .flo-testimonials-dot--active,
 .flo-testimonials-dot:hover {
     background: var(--color-primary);
-    transform: scale(1.2);
-}
-
-/* Contenu des slides */
-.flo-testimonials-content {
-    text-align: center;
-}
-
-.flo-testimonials-text {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--color-gray);
-    margin-bottom: var(--spacing-lg);
-    font-style: italic;
-}
-
-.flo-testimonials-author {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-xs);
-}
-
-.flo-testimonials-author-name {
-    font-weight: 700;
-    color: var(--color-dark);
-}
-
-.flo-testimonials-author-role {
-    font-size: 0.9rem;
-    color: var(--color-gray);
 }
 
 /* RESPONSIVE */
 @media (max-width: 992px) {
-    .flo-testimonials-carousel-wrapper {
-        padding: 0 60px;
+    .flo-testimonials-nav--prev {
+        left: -55px;
     }
-    
+    .flo-testimonials-nav--next {
+        right: -55px;
+    }
     .flo-testimonials-nav {
-        width: 44px;
-        height: 44px;
+        width: 40px;
+        height: 40px;
     }
 }
 
@@ -2469,22 +2422,13 @@ button {
     .flo-testimonials-carousel-wrapper {
         padding: 0 50px;
     }
-    
+    .flo-testimonials-nav--prev {
+        left: 0;
+    }
+    .flo-testimonials-nav--next {
+        right: 0;
+    }
     .flo-testimonials-carousel {
-        height: 350px;
-    }
-    
-    .flo-testimonials-slide {
-        padding: var(--spacing-lg);
-    }
-    
-    .flo-testimonials-nav {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .flo-testimonials-nav i {
-        width: 20px;
-        height: 20px;
+        height: 300px;
     }
 }
