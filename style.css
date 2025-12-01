@@ -48,19 +48,11 @@
 /* CORRECTIONS GLOBALES */
 /* ============================================ */
 
-/* Scroll uniquement sur la page entière */
 html, body {
     overflow-x: hidden;
 }
 
-/* Sections sans scroll interne */
 .section {
-    overflow: visible !important;
-    max-height: none !important;
-}
-
-/* Container sans scroll */
-.container {
     overflow: visible !important;
 }
 
@@ -882,37 +874,17 @@ button {
 }
 
 @media (max-width: 992px) {
-    .steps-cards {
-        flex-direction: column;
-        gap: var(--spacing-lg);
-    }
-    .step__arrow {
-        transform: rotate(90deg);
-    }
-    .step-card {
-        max-width: 100%;
-        width: 100%;
-    }
-    .step-card__inner {
-        height: auto;
-        min-height: 300px;
-    }
+    .steps-cards { flex-direction: column; gap: var(--spacing-lg); }
+    .step__arrow { transform: rotate(90deg); }
+    .step-card { max-width: 100%; width: 100%; }
+    .step-card__inner { height: auto; min-height: 300px; }
 }
 
 @media (max-width: 768px) {
-    .step-card__inner {
-        min-height: 280px;
-    }
-    .step-card__front {
-        padding: var(--spacing-lg);
-        border-radius: 20px;
-    }
-    .step-card__title {
-        font-size: 1.25rem;
-    }
-    .step-card__text {
-        font-size: 0.95rem;
-    }
+    .step-card__inner { min-height: 280px; }
+    .step-card__front { padding: var(--spacing-lg); border-radius: 20px; }
+    .step-card__title { font-size: 1.25rem; }
+    .step-card__text { font-size: 0.95rem; }
 }
 .pricing__simulator {
     max-width: 600px;
@@ -2269,47 +2241,56 @@ button {
 }
 
 /* ============================================ */
-/* PRICING - ESPACEMENT MINIMAL */
+/* PRICING - ESPACE MINIMAL */
 /* ============================================ */
 
 #tarifs.section,
 .pricing.section {
-    padding-bottom: 20px !important;
+    padding-bottom: 0 !important;
     margin-bottom: 0 !important;
-    overflow: visible !important;
+}
+
+.pricing .container {
+    padding-bottom: 0 !important;
+}
+
+.pricing-card {
+    margin-bottom: 0 !important;
 }
 
 
 /* ============================================ */
-/* TÉMOIGNAGES - CARROUSEL CENTRÉ */
+/* TÉMOIGNAGES - CARROUSEL CORRIGÉ */
 /* ============================================ */
 
-.flo-testimonials {
-    overflow: visible !important;
-    padding: var(--spacing-3xl) 0;
+.flo-testimonials.section {
+    padding-top: var(--spacing-2xl) !important;
+    padding-bottom: var(--spacing-2xl) !important;
+    overflow: hidden !important;
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
 }
 
 .flo-testimonials .container {
-    overflow: visible !important;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
 }
 
 .flo-testimonials-carousel-wrapper {
     position: relative;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
+    padding: 40px 0;
 }
 
 .flo-testimonials-carousel {
     position: relative;
     width: 100%;
-    max-width: 600px;
-    height: 350px;
+    max-width: 550px;
+    height: 320px;
     perspective: 1000px;
-    overflow: visible;
     margin: 0 auto;
 }
 
@@ -2320,26 +2301,31 @@ button {
     transform-style: preserve-3d;
 }
 
+/* SLIDES - EMPILÉES AU CENTRE */
 .flo-testimonials-slide {
-    position: absolute;
-    width: 90%;
-    max-width: 450px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    position: absolute !important;
+    width: 100% !important;
+    max-width: 480px !important;
+    left: 50% !important;
+    top: 50% !important;
     background: var(--color-white);
     border-radius: 16px;
-    padding: var(--spacing-xl);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid #e2e8f0;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .flo-testimonials-slide.active {
-    box-shadow: 0 15px 50px rgba(74, 144, 226, 0.15);
+    opacity: 1 !important;
+    pointer-events: auto;
+    box-shadow: 0 20px 50px rgba(74, 144, 226, 0.15);
+    z-index: 10 !important;
 }
 
-/* FLÈCHES - POSITIONNÉES SUR LES CÔTÉS */
+/* FLÈCHES */
 .flo-testimonials-nav {
     position: absolute;
     top: 50%;
@@ -2368,11 +2354,11 @@ button {
 }
 
 .flo-testimonials-nav--prev {
-    left: -70px;
+    left: -80px;
 }
 
 .flo-testimonials-nav--next {
-    right: -70px;
+    right: -80px;
 }
 
 .flo-testimonials-nav i {
@@ -2382,12 +2368,12 @@ button {
     transition: color 0.3s ease;
 }
 
-/* DOTS - CENTRÉS */
+/* DOTS */
 .flo-testimonials-dots {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: var(--spacing-lg);
+    margin-top: 20px;
 }
 
 .flo-testimonials-dot {
@@ -2405,30 +2391,18 @@ button {
 }
 
 /* RESPONSIVE */
-@media (max-width: 992px) {
-    .flo-testimonials-nav--prev {
-        left: -55px;
+@media (max-width: 768px) {
+    .flo-testimonials-carousel {
+        max-width: 100%;
+        height: 280px;
     }
-    .flo-testimonials-nav--next {
-        right: -55px;
+    .flo-testimonials-slide {
+        padding: 24px;
     }
+    .flo-testimonials-nav--prev { left: 10px; }
+    .flo-testimonials-nav--next { right: 10px; }
     .flo-testimonials-nav {
         width: 40px;
         height: 40px;
-    }
-}
-
-@media (max-width: 768px) {
-    .flo-testimonials-carousel-wrapper {
-        padding: 0 50px;
-    }
-    .flo-testimonials-nav--prev {
-        left: 0;
-    }
-    .flo-testimonials-nav--next {
-        right: 0;
-    }
-    .flo-testimonials-carousel {
-        height: 300px;
     }
 }

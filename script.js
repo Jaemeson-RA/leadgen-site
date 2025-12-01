@@ -73,46 +73,71 @@ if (employeesSlider) {
     });
 }
 
-// CAROUSEL TÉMOIGNAGES
-const track = document.getElementById('flo-testimonials-track');
+// CAROUSEL TÉMOIGNAGES - SIMPLE (une slide à la fois)
 const slides = document.querySelectorAll('.flo-testimonials-slide');
 const prevBtn = document.getElementById('flo-carousel-prev');
 const nextBtn = document.getElementById('flo-carousel-next');
 const dots = document.querySelectorAll('.flo-testimonials-dot');
-let currentIndex = 0, autoplayInterval;
+let currentIndex = 0;
+let autoplayInterval;
 const totalSlides = slides.length;
 
 function updateCarousel() {
     slides.forEach((slide, index) => {
-        const offset = index - currentIndex;
-        const absOffset = Math.abs(offset);
+        // Retirer toutes les classes et styles
+        slide.classList.remove('active');
+        slide.style.transform = 'translate(-50%, -50%) scale(0.8)';
+        slide.style.opacity = '0';
+        slide.style.zIndex = '1';
         
-        let translateX = offset * 60;
-        let translateZ = -absOffset * 150;
-        let scale = 1 - (absOffset * 0.15);
-        let opacity = absOffset === 0 ? 1 : 0.6;
-        
-        slide.style.transform = `translateX(${translateX}%) translateZ(${translateZ}px) scale(${scale})`;
-        slide.style.opacity = opacity;
-        slide.style.zIndex = totalSlides - absOffset;
-        slide.classList.toggle('active', absOffset === 0);
+        if (index === currentIndex) {
+            // Slide active - visible et centrée
+            slide.classList.add('active');
+            slide.style.transform = 'translate(-50%, -50%) scale(1)';
+            slide.style.opacity = '1';
+            slide.style.zIndex = '10';
+        }
     });
+    
+    // Mettre à jour les dots
     dots.forEach((dot, i) => dot.classList.toggle('flo-testimonials-dot--active', i === currentIndex));
 }
 
-function nextSlide() { currentIndex = (currentIndex + 1) % totalSlides; updateCarousel(); }
-function prevSlide() { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateCarousel(); }
-function startAutoplay() { autoplayInterval = setInterval(nextSlide, 5000); }
-function stopAutoplay() { clearInterval(autoplayInterval); }
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateCarousel();
+}
 
-if (track) {
+function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateCarousel();
+}
+
+function startAutoplay() {
+    autoplayInterval = setInterval(nextSlide, 5000);
+}
+
+function stopAutoplay() {
+    clearInterval(autoplayInterval);
+}
+
+if (slides.length > 0) {
+    // Initialiser
     updateCarousel();
     startAutoplay();
+    
+    // Event listeners
     if (prevBtn) prevBtn.addEventListener('click', () => { stopAutoplay(); prevSlide(); startAutoplay(); });
     if (nextBtn) nextBtn.addEventListener('click', () => { stopAutoplay(); nextSlide(); startAutoplay(); });
-    dots.forEach((dot, i) => dot.addEventListener('click', () => { stopAutoplay(); currentIndex = i; updateCarousel(); startAutoplay(); }));
-    track.addEventListener('mouseenter', stopAutoplay);
-    track.addEventListener('mouseleave', startAutoplay);
+    
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            stopAutoplay();
+            currentIndex = i;
+            updateCarousel();
+            startAutoplay();
+        });
+    });
 }
 
 // FAQ
