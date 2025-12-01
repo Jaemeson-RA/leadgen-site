@@ -56,57 +56,48 @@
     </header>
 
     <!-- ============================================ -->
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION WITH VIDEO -->
     <!-- ============================================ -->
     <section class="hero" id="hero">
-        <div class="hero__background"></div>
         <div class="container">
             <div class="hero__content">
-                <h1 class="hero__title">
-                    FLO, l'IA qui structure vos process internes
-                </h1>
-                <p class="hero__subtitle">
-                    Application no-code qui digitalise vos processus d'entreprise et les enrichit avec l'IA pour rendre votre organisation plus fluide, sans changer vos outils.
-                </p>
-                <div class="hero__cta">
-                    <a href="#demo" class="btn btn--primary btn--large">
-                        <i data-lucide="play-circle"></i>
-                        Demander une démo
-                    </a>
-                    <a href="#comment-ca-marche" class="btn btn--outline btn--large">
-                        <i data-lucide="info"></i>
-                        Découvrir FLO
-                    </a>
+                <div class="hero__text">
+                    <h1 class="hero__title">
+                        FLO, l'IA qui structure vos process internes
+                    </h1>
+                    <p class="hero__subtitle">
+                        Application no-code qui digitalise vos processus d'entreprise et les enrichit avec l'IA pour rendre votre organisation plus fluide, sans changer vos outils.
+                    </p>
+                    <div class="hero__cta">
+                        <a href="#demo" class="btn btn--primary btn--large">
+                            <i data-lucide="play-circle"></i>
+                            Découvrir FLO
+                        </a>
+                        <a href="#comment-ca-marche" class="btn btn--outline btn--large">
+                            <i data-lucide="check-circle"></i>
+                            Sans engagement
+                        </a>
+                    </div>
+                    <p class="hero__note">
+                        <i data-lucide="check-circle"></i>
+                        Essai gratuit 14 jours • Sans engagement
+                    </p>
                 </div>
-                <p class="hero__note">
-                    <i data-lucide="check-circle"></i>
-                    Essai gratuit 14 jours • Sans engagement
-                </p>
-            </div>
-            
-            <div class="hero__visual">
-                <!-- Mockup CSS Interface -->
-                <div class="mockup">
-                    <div class="mockup__window">
-                        <div class="mockup__header">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <div class="mockup__content">
-                            <div class="mockup__sidebar">
-                                <div class="mockup__item"></div>
-                                <div class="mockup__item"></div>
-                                <div class="mockup__item mockup__item--active"></div>
-                                <div class="mockup__item"></div>
-                                <div class="mockup__item"></div>
-                            </div>
-                            <div class="mockup__main">
-                                <div class="mockup__card"></div>
-                                <div class="mockup__card"></div>
-                                <div class="mockup__card"></div>
-                            </div>
-                        </div>
+                
+                <div class="hero__visual">
+                    <div class="video-container">
+                        <video 
+                            class="hero-video" 
+                            autoplay 
+                            muted 
+                            loop 
+                            playsinline
+                            poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect fill='%23f0f4f8' width='800' height='600'/%3E%3C/svg%3E"
+                        >
+                            <source src="hero-video.mp4" type="video/mp4">
+                            Votre navigateur ne supporte pas la lecture de vidéos.
+                        </video>
+                        <div class="video-overlay"></div>
                     </div>
                 </div>
             </div>
@@ -762,9 +753,9 @@
                         <span>FLO</span>
                     </div>
                     <p class="footer__tagline">Centralisez vos process internes en un seul endroit</p>
-                    <a href="mailto:contact@flo-saas.com" class="footer__email">
+                    <a href="/cdn-cgi/l/email-protection#462529283227253206202a296b352727356825292b" class="footer__email">
                         <i data-lucide="mail"></i>
-                        contact@flo-saas.com
+                        <span class="__cf_email__" data-cfemail="e88b87869c898b9ca88e8487c59b89899bc68b8785">[email&#160;protected]</span>
                     </a>
                 </div>
                 
@@ -817,12 +808,4 @@
                     <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
                     <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
                     <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="script.js"></script>
-</body>
-</html>
+             
