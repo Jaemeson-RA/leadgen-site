@@ -44,44 +44,81 @@ if (navToggle) {
 }
 
 // ============================================
-// COMMENT ÇA MARCHE - ACTIVATION PROGRESSIVE BLEUE (RAPIDE)
+// COMMENT ÇA MARCHE - EFFET VAGUE EN BOUCLE
 // ============================================
-const observerOptions = {
-    threshold: 0.3,
-    rootMargin: '0px'
-};
-
 const howItWorksSection = document.querySelector('.how-it-works');
 
 if (howItWorksSection) {
     const cards = howItWorksSection.querySelectorAll('.step-card');
-    const arrows = howItWorksSection.querySelectorAll('.step__arrow');
+    let currentActiveIndex = 0;
+    let waveInterval = null;
+    let hasStarted = false;
     
+    // Fonction pour activer une seule carte
+    function activateCard(index) {
+        cards.forEach((card, i) => {
+            if (i === index) {
+                card.classList.add('active');
+            } else {
+                card.classList.remove('active');
+            }
+        });
+    }
+    
+    // Fonction pour démarrer la vague en boucle
+    function startWave() {
+        if (waveInterval) return; // Déjà en cours
+        
+        // Première activation
+        activateCard(0);
+        currentActiveIndex = 0;
+        
+        // Boucle toutes les 800ms (comme la vidéo)
+        waveInterval = setInterval(() => {
+            currentActiveIndex = (currentActiveIndex + 1) % cards.length;
+            activateCard(currentActiveIndex);
+        }, 800);
+    }
+    
+    // Fonction pour arrêter la vague
+    function stopWave() {
+        if (waveInterval) {
+            clearInterval(waveInterval);
+            waveInterval = null;
+        }
+        // Retirer toutes les classes active
+        cards.forEach(card => card.classList.remove('active'));
+    }
+    
+    // Observer pour détecter quand la section est visible
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Apparition des cartes - PLUS RAPIDE
-                cards.forEach((card, index) => {
+                // Section visible
+                if (!hasStarted) {
+                    // Première fois : faire apparaître les cartes
+                    cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                        }, index * 150); // Apparition rapide
+                    });
+                    
+                    // Démarrer la vague après l'apparition
                     setTimeout(() => {
-                        card.classList.add('visible');
-                    }, index * 300); // Était 600ms, maintenant 300ms
-                });
-                
-                // Activation progressive en BLEU - PLUS RAPIDE
-                cards.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.classList.add('active');
-                        // Activer la flèche correspondante
-                        if (arrows[index]) {
-                            arrows[index].classList.add('active');
-                        }
-                    }, 500 + (index * 500)); // Était 1000 + 800ms, maintenant 500 + 500ms
-                });
-                
-                observer.unobserve(entry.target);
+                        startWave();
+                    }, 600);
+                    
+                    hasStarted = true;
+                } else {
+                    // Reprendre la vague
+                    startWave();
+                }
+            } else {
+                // Section pas visible : arrêter la vague
+                stopWave();
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.3 });
     
     observer.observe(howItWorksSection);
 }
