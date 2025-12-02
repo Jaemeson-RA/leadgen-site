@@ -2398,3 +2398,38 @@ button {
     padding-top: 60px !important;
     margin-top: 0 !important;
 }
+
+/* ============================================ */
+/* SECTIONS AVEC FONDS COLORÉS - SCINDER */
+/* ============================================ */
+
+/* Témoignages - fond gris clair */
+#temoignages,
+.flo-testimonials,
+.flo-testimonials.section {
+    background: #f5f7fa !important;
+    padding: 60px 0 !important;
+    margin: 0 !important;
+}
+
+/* Formulaire/CTA - fond bleu très léger */
+#contact,
+.cta,
+.cta.section {
+    background: linear-gradient(180deg, #eef4fb 0%, #f8fafc 100%) !important;
+    padding: 60px 0 !important;
+    margin: 0 !important;
+}
+
+/* Pricing - fond blanc, padding réduit */
+#tarifs,
+.pricing,
+.pricing.section {
+    background: #ffffff !important;
+    padding: 60px 0 40px 0 !important;
+    margin: 0 !important;
+}
+
+.pricing__simulator {
+    margin: 0 auto !important;
+}
