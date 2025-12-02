@@ -25,7 +25,7 @@
     --spacing-md: 1.5rem;
     --spacing-lg: 2rem;
     --spacing-xl: 3rem;
-    --spacing-xxl: 4rem;
+    --spacing-xxl: 2.5rem;
     
     /* Border radius */
     --radius-sm: 4px;
@@ -44,47 +44,6 @@
     --transition-normal: 300ms ease-in-out;
     --transition-slow: 500ms ease-in-out;
 }
-
-/* OVERRIDE SPACING SECTIONS */
-#tarifs.section {
-    padding: 50px 0 20px 0 !important;
-}
-
-#testimonials.section {
-    padding: 30px 0 50px 0 !important;
-}
-
-/* ============================================ */
-/* CORRECTIONS GLOBALES - AUCUN SCROLL */
-/* ============================================ */
-
-* {
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
-}
-
-*::-webkit-scrollbar {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-}
-
-html, body {
-    overflow-x: hidden !important;
-}
-
-.section,
-.container,
-.how-it-works,
-.pricing,
-.flo-testimonials,
-.faq,
-.cta {
-    overflow: visible !important;
-    max-height: none !important;
-    height: auto !important;
-}
-
 
 /* ============================================ */
 /* RESET & BASE */
@@ -156,7 +115,7 @@ button {
 /* ============================================ */
 
 .section {
-    padding: var(--spacing-xxl) 0;
+    padding: 40px 0;
     width: 100%;
     overflow-x: hidden;
 }
@@ -765,39 +724,26 @@ button {
 }
 
 /* ============================================ */
-/* COMMENT ÇA MARCHE - EFFET VAGUE */
+/* HOW IT WORKS - VERSION CARTES FLIP */
 /* ============================================ */
-
-.how-it-works {
-    background: var(--color-white);
-    overflow: visible !important;
-}
 
 .steps-cards {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: var(--spacing-xl);
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 0;
 }
-
-.step__arrow {
-    color: var(--color-primary);
-    font-size: 2rem;
-    flex-shrink: 0;
-    opacity: 0.5;
-}
-
-.step__arrow i { width: 32px; height: 32px; }
 
 .step-card {
     flex: 1;
     max-width: 320px;
+    height: 400px;
+    perspective: 1000px;
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .step-card.visible {
@@ -805,11 +751,24 @@ button {
     transform: translateY(0);
 }
 
+/* Délai d'apparition progressif */
+.step-card[data-step="1"] { transition-delay: 0.1s; }
+.step-card[data-step="2"] { transition-delay: 0.3s; }
+.step-card[data-step="3"] { transition-delay: 0.5s; }
+
 .step-card__inner {
     position: relative;
     width: 100%;
-    height: 420px;
-    padding: 10px 0;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+/* Effet flip au hover sur desktop */
+@media (hover: hover) and (pointer: fine) {
+    .step-card:hover .step-card__inner {
+        transform: rotateY(180deg);
+    }
 }
 
 .step-card__front,
@@ -819,62 +778,173 @@ button {
     height: 100%;
     backface-visibility: hidden;
     background: var(--color-white);
-    border: 2px solid #e2e8f0;
-    border-radius: 24px;
+    border-radius: var(--radius-lg);
     padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+    border: 2px solid #e2e8f0;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s ease;
-}
-
-.step-card__back { opacity: 0; pointer-events: none; z-index: 0; }
-
-.step-card__front {
-    opacity: 1;
-    z-index: 2;
     align-items: center;
     text-align: center;
+    gap: var(--spacing-md);
 }
 
-.step-card.active .step-card__front {
-    background: #4A90E2;
-    border: 2px solid #4A90E2;
-    border-radius: 24px;
-    transform: translateY(-8px);
-    box-shadow: 0 12px 32px rgba(74, 144, 226, 0.35);
+.step-card__back {
+    transform: rotateY(180deg);
+    justify-content: center;
 }
-
-.step-card.active .step-card__front .step-card__title,
-.step-card.active .step-card__front .step-card__text { color: var(--color-white); }
 
 .step-card__icon {
-    width: 64px; height: 64px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    display: flex; align-items: center; justify-content: center;
-    color: var(--color-white);
+    width: 80px;
+    height: 80px;
+    background: rgba(74, 144, 226, 0.1);
+    color: var(--color-primary);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.step-card__title {
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--color-dark);
+    font-weight: 700;
+}
+
+.step-card__text {
+    color: var(--color-gray);
+    line-height: 1.6;
+    font-size: 0.9375rem;
+}
+
+.step-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: left;
+}
+
+.step-card__list li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
     margin-bottom: var(--spacing-sm);
-    transition: all 0.4s ease;
+    color: var(--color-dark);
+    font-size: 0.9375rem;
 }
 
-.step-card.active .step-card__icon { background: var(--color-white); color: #4A90E2; }
-.step-card__icon i { width: 32px; height: 32px; }
-.step-card__title { font-size: 1.5rem; font-weight: 700; color: var(--color-dark); transition: color 0.4s ease; }
-.step-card__text { font-size: 1rem; line-height: 1.6; color: var(--color-gray); transition: color 0.4s ease; }
-.step-card__list { display: none; }
+.step-card__list i {
+    color: var(--color-success);
+    flex-shrink: 0;
+}
 
+/* Masquer les indicateurs sur desktop */
+.step-card__indicators {
+    display: none;
+}
+
+.step__arrow {
+    color: var(--color-primary);
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* RESPONSIVE TABLETTE */
 @media (max-width: 992px) {
-    .steps-cards { flex-direction: column; gap: var(--spacing-lg); }
-    .step__arrow { transform: rotate(90deg); }
-    .step-card { max-width: 100%; width: 100%; }
-    .step-card__inner { height: auto; min-height: 300px; }
+    .steps-cards {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+    
+    .step-card {
+        max-width: 400px;
+        width: 100%;
+    }
+    
+    .step__arrow {
+        transform: rotate(90deg);
+        margin: var(--spacing-sm) 0;
+    }
 }
+
+/* RESPONSIVE MOBILE */
 @media (max-width: 768px) {
-    .step-card__inner { min-height: 280px; }
-    .step-card__front { padding: var(--spacing-lg); border-radius: 20px; }
-    .step-card__title { font-size: 1.25rem; }
+    .step-card {
+        height: auto;
+        min-height: 420px;
+    }
+    
+    /* Sur mobile : carrousel interne au lieu de flip */
+    .step-card__inner {
+        position: relative;
+        overflow: visible;
+        height: auto;
+        min-height: 420px;
+        transform: none !important;
+    }
+    
+    .step-card__front,
+    .step-card__back {
+        position: relative;
+        backface-visibility: visible;
+        transition: opacity 0.3s ease-out;
+        transform: none !important;
+        height: auto;
+    }
+    
+    .step-card__front {
+        display: flex;
+        opacity: 1;
+    }
+    
+    .step-card__back {
+        display: none;
+        opacity: 0;
+    }
+    
+    /* État actif du carrousel - Afficher le verso */
+    .step-card__inner.show-back .step-card__front {
+        display: none;
+        opacity: 0;
+    }
+    
+    .step-card__inner.show-back .step-card__back {
+        display: flex;
+        opacity: 1;
+    }
+    
+    .step-card__icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.75rem;
+    }
+    
+    .step-card__title {
+        font-size: 1.375rem;
+    }
+    
+    .step-card__text {
+        font-size: 0.875rem;
+    }
+    
+    .step-card__list {
+        text-align: left;
+    }
+    
+    .step-card__list li {
+        font-size: 0.875rem;
+    }
 }
+
+/* ============================================ */
+/* PRICING */
+/* ============================================ */
+
 .pricing__simulator {
     max-width: 600px;
     margin: 0 auto var(--spacing-xxl);
@@ -2230,300 +2300,19 @@ button {
 }
 
 /* ============================================ */
-/* PRICING - ESPACE NORMAL */
+/* SECTIONS - ESPACEMENTS RÉDUITS */
 /* ============================================ */
 
-#tarifs.section,
-.pricing.section {
-    padding-bottom: var(--spacing-2xl) !important;
-    margin-bottom: 0 !important;
-}
-
-
-/* ============================================ */
-/* TÉMOIGNAGES - CARROUSEL SIMPLE */
-/* ============================================ */
-
-.flo-testimonials.section {
-    padding: var(--spacing-xl) 0 var(--spacing-2xl) 0 !important;
-    margin-top: 0 !important;
-    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-}
-
-.flo-testimonials .section__title {
-    text-align: center;
-    margin-bottom: var(--spacing-xl);
-}
-
-.flo-testimonials-carousel-wrapper {
-    position: relative;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0 70px;
-}
-
-.flo-testimonials-carousel {
-    position: relative;
-    width: 100%;
-}
-
-.flo-testimonials-track {
-    position: relative;
-    width: 100%;
-    min-height: 280px;
-}
-
-/* SLIDES - En flux, cachées par défaut */
-.flo-testimonials-slide {
-    display: none;
-    width: 100%;
-    background: var(--color-white);
-    border-radius: 16px;
-    padding: 32px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e2e8f0;
-}
-
-.flo-testimonials-slide.active {
-    display: block !important;
-}
-
-/* FLÈCHES */
-.flo-testimonials-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--color-white);
-    border: 2px solid #e2e8f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.flo-testimonials-nav:hover {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-}
-.flo-testimonials-nav:hover i { color: white; }
-
-.flo-testimonials-nav--prev { left: 0; }
-.flo-testimonials-nav--next { right: 0; }
-
-.flo-testimonials-nav i {
-    width: 24px;
-    height: 24px;
-    color: var(--color-dark);
-    transition: color 0.3s ease;
-}
-
-/* DOTS */
-.flo-testimonials-dots {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: var(--spacing-lg);
-}
-
-.flo-testimonials-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #e2e8f0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.flo-testimonials-dot--active,
-.flo-testimonials-dot:hover {
-    background: var(--color-primary);
-}
-
-@media (max-width: 768px) {
-    .flo-testimonials-carousel-wrapper { padding: 0 55px; }
-    .flo-testimonials-slide { padding: 24px; }
-    .flo-testimonials-nav { width: 40px; height: 40px; }
-}
-
-/* ============================================ */
-/* FIX ESPACEMENT PRICING → TÉMOIGNAGES */
-/* ============================================ */
-
-#tarifs.section,
-.pricing.section {
-    padding-bottom: 20px !important;
-}
-
-.pricing__simulator {
-    margin-bottom: 0 !important;
-}
-
-.pricing .container {
-    padding-bottom: 0 !important;
-}
-
-.flo-testimonials.section {
-    padding-top: 40px !important;
-    margin-top: 0 !important;
-}
-
-/* ============================================ */
-/* FIX ESPACEMENT - TRÈS AGRESSIF */
-/* ============================================ */
-
-#tarifs,
-#tarifs.section,
-.pricing,
-.pricing.section {
-    padding-top: 60px !important;
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-}
-
-.pricing__simulator {
-    margin: 0 auto !important;
-    margin-bottom: 0 !important;
-}
-
-.pricing .container,
-#tarifs .container {
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-}
-
-.pricing-card,
-.simulator {
-    margin-bottom: 0 !important;
-}
-
-#temoignages,
-.flo-testimonials,
-.flo-testimonials.section {
-    padding-top: 60px !important;
-    margin-top: 0 !important;
-}
-
-/* ============================================ */
-/* SECTIONS AVEC FONDS COLORÉS - SCINDER */
-/* ============================================ */
-
-/* Témoignages - fond gris clair */
-#temoignages,
-.flo-testimonials,
-.flo-testimonials.section {
-    background: #fafbfc !important;
-    padding: 60px 0 !important;
-    margin: 0 !important;
-}
-
-/* Formulaire/CTA - fond bleu très léger */
-#contact,
-.cta,
-.cta.section {
-    background: linear-gradient(180deg, #eef4fb 0%, #f8fafc 100%) !important;
-    padding: 60px 0 !important;
-    margin: 0 !important;
-}
-
-/* Pricing - fond blanc, padding réduit */
-#tarifs,
-.pricing,
-.pricing.section {
-    background: #ffffff !important;
-    padding: 60px 0 40px 0 !important;
-    margin: 0 !important;
-}
-
-.pricing__simulator {
-    margin: 0 auto !important;
-}
-
-/* ============================================ */
-/* FIX FINAL - BONNES CLASSES */
-/* ============================================ */
-
-/* PRICING - fond blanc, pas de marge en bas */
-.pricing.section.section--gray,
 #tarifs {
-    background: #ffffff !important;
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-}
-
-.pricing__simulator {
-    margin-bottom: 20px !important;
-}
-
-.pricing__plans {
-    margin-top: 0 !important;
-}
-
-/* TÉMOIGNAGES - fond gris clair */
-.testimonials.section,
-#testimonials {
-    background: #fafbfc !important;
-    padding: 40px 0 !important;
-    margin: 0 !important;
-}
-
-/* CTA/FORMULAIRE - fond bleu léger */
-.cta.section,
-#contact {
-    background: #eef4fb !important;
-    padding: 40px 0 !important;
-    margin: 0 !important;
-}
-
-/* ============================================ */
-/* ESPACE MINIMAL ENTRE SECTIONS */
-/* ============================================ */
-
-#tarifs,
-.pricing.section,
-.pricing.section.section--gray {
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-}
-
-#tarifs .container,
-.pricing .container {
-    padding-bottom: 20px !important;
-}
-
-#testimonials,
-.testimonials.section {
-    padding-top: 30px !important;
-    margin-top: 0 !important;
-    background: #fafbfc !important;
-}
-
-.section--gray {
-    background: #ffffff !important;
-}
-
-/* ============================================ */
-/* OVERRIDE FINAL - ESPACEMENT SECTIONS */
-/* ============================================ */
-
-section.pricing.section.section--gray#tarifs {
     padding: 40px 0 20px 0 !important;
-    margin: 0 !important;
-    background: #fff !important;
+    background: #fff;
 }
 
-section.testimonials.section#testimonials {
-    padding: 40px 0 !important;
-    margin: 0 !important;
-    background: #f8f9fa !important;
+#testimonials {
+    padding: 30px 0 40px 0 !important;
+    background: #f8f9fa;
 }
 
-section.cta.section#contact {
-    padding: 40px 0 !important;
-    margin: 0 !important;
+#contact {
+    background: #eef4fb;
 }
