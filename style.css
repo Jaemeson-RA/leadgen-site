@@ -3077,3 +3077,199 @@ html, body {
 .testimonials-carousel__nav {
     display: none !important;
 }
+
+
+/* ============================================ */
+/* COMMENT ÇA MARCHE - EFFET BLEU PROGRESSIF */
+/* ============================================ */
+
+.how-it-works {
+    background: var(--color-white);
+    overflow: visible;
+}
+
+.steps-cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.step__arrow {
+    color: var(--color-primary);
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.6s ease;
+    opacity: 0.5;
+    flex-shrink: 0;
+}
+
+.step__arrow.active {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.step__arrow i {
+    width: 32px;
+    height: 32px;
+}
+
+/* Cartes - État initial */
+.step-card {
+    flex: 1;
+    max-width: 320px;
+}
+
+.step-card__inner {
+    position: relative;
+    height: 350px;
+}
+
+.step-card__front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--color-white);
+    border: 2px solid #e2e8f0;
+    border-radius: 24px;
+    padding: var(--spacing-xl);
+    text-align: center;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.step-card__back {
+    display: none;
+}
+
+/* Animation d'apparition */
+.step-card.fade-in-step {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.step-card.fade-in-step.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* État activé (BLEU) */
+.step-card.active .step-card__front {
+    background: linear-gradient(135deg, #4A90E2, #5BA3E8) !important;
+    border-color: #4A90E2 !important;
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(74, 144, 226, 0.3);
+}
+
+/* Textes passent en blanc quand activé */
+.step-card.active .step-card__title,
+.step-card.active .step-card__text {
+    color: #fff !important;
+}
+
+/* Icône - État initial */
+.step-card__icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4A90E2, #20C997);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    margin-bottom: var(--spacing-sm);
+    transition: all 0.6s ease;
+}
+
+/* Icône - État activé (blanc) */
+.step-card.active .step-card__icon {
+    background: #fff !important;
+    color: #4A90E2 !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.step-card__icon i {
+    width: 32px;
+    height: 32px;
+}
+
+/* Titre */
+.step-card__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: var(--spacing-xs);
+    transition: color 0.6s ease;
+}
+
+/* Description */
+.step-card__text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-gray);
+    transition: color 0.6s ease;
+}
+
+/* Effet de pulse quand actif */
+@keyframes pulse-card {
+    0%, 100% {
+        transform: translateY(-8px) scale(1.02);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.03);
+    }
+}
+
+.step-card.active .step-card__front {
+    animation: pulse-card 2s ease-in-out infinite;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .steps-cards {
+        flex-direction: column;
+        gap: var(--spacing-xl);
+    }
+    
+    .step__arrow {
+        transform: rotate(90deg);
+    }
+    
+    .step__arrow.active {
+        transform: rotate(90deg) scale(1.2);
+    }
+    
+    .step-card {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .step-card__inner {
+        height: auto;
+        min-height: 280px;
+    }
+    
+    .step-card__front {
+        position: relative;
+        padding: var(--spacing-lg);
+    }
+    
+    .step-card__title {
+        font-size: 1.25rem;
+    }
+    
+    .step-card__text {
+        font-size: 0.95rem;
+    }
+}

@@ -5,17 +5,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // CARROUSEL TÉMOIGNAGES - BOUCLE INFINIE
     const track = document.getElementById('testimonials-track');
     if (track) {
-        // Cloner TOUS les enfants pour une boucle seamless
         const cards = track.children;
         const cardsArray = Array.from(cards);
-        
-        // Dupliquer chaque carte
         cardsArray.forEach(card => {
             const clone = card.cloneNode(true);
             track.appendChild(clone);
         });
-        
-        console.log('Carrousel: ' + track.children.length + ' cartes (originales + clones)');
+        console.log('Carrousel: ' + track.children.length + ' cartes');
     }
 });
 
@@ -37,19 +33,33 @@ if (navToggle) {
     navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navMenu.classList.remove('active')));
 }
 
-// EFFET VAGUE EN BOUCLE - COMMENT ÇA MARCHE
+// ============================================
+// COMMENT ÇA MARCHE - EFFET BLEU EN BOUCLE
+// ============================================
 const howItWorksSection = document.querySelector('.how-it-works');
 if (howItWorksSection) {
     const cards = howItWorksSection.querySelectorAll('.step-card');
+    const arrows = howItWorksSection.querySelectorAll('.step__arrow');
     let currentActiveIndex = 0;
     let waveInterval = null;
+    let hasStarted = false;
     
     function activateCard(index) {
+        // Désactiver toutes les cartes et flèches
         cards.forEach((card, i) => {
             if (i === index) {
                 card.classList.add('active');
             } else {
                 card.classList.remove('active');
+            }
+        });
+        
+        // Activer les flèches jusqu'à la carte active
+        arrows.forEach((arrow, i) => {
+            if (i < index) {
+                arrow.classList.add('active');
+            } else {
+                arrow.classList.remove('active');
             }
         });
     }
@@ -61,7 +71,7 @@ if (howItWorksSection) {
         waveInterval = setInterval(() => {
             currentActiveIndex = (currentActiveIndex + 1) % cards.length;
             activateCard(currentActiveIndex);
-        }, 1200);
+        }, 1500); // 1.5 secondes entre chaque carte
     }
     
     function stopWave() {
@@ -70,17 +80,30 @@ if (howItWorksSection) {
             waveInterval = null;
         }
         cards.forEach(card => card.classList.remove('active'));
+        arrows.forEach(arrow => arrow.classList.remove('active'));
     }
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                startWave();
+                if (!hasStarted) {
+                    // Première fois : faire apparaître les cartes
+                    cards.forEach((card, i) => {
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                        }, i * 200);
+                    });
+                    // Puis démarrer l'effet vague
+                    setTimeout(startWave, 800);
+                    hasStarted = true;
+                } else {
+                    startWave();
+                }
             } else {
                 stopWave();
             }
         });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.3 });
     
     observer.observe(howItWorksSection);
 }
