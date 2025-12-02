@@ -2895,3 +2895,60 @@ html, body {
     padding-left: 0 !important;
     gap: 0 !important;
 }
+
+
+/* ============================================ */
+/* CARROUSEL TÉMOIGNAGES - CORRECTIONS FINALES */
+/* ============================================ */
+
+/* Carrousel pleine largeur absolue */
+#testimonials {
+    overflow: visible !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+#testimonials .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.testimonials-carousel {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 40px 0 !important;
+    overflow: visible !important;
+}
+
+/* Réduire le fondu à droite pour voir les cartes */
+.testimonials-carousel::after {
+    width: 100px !important;
+    background: linear-gradient(to left, #f8f9fa 0%, transparent 100%) !important;
+}
+
+.testimonials-carousel::before {
+    width: 100px !important;
+    background: linear-gradient(to right, #f8f9fa 0%, transparent 100%) !important;
+}
+
+/* Track prend toute la place */
+.testimonials-carousel__track {
+    padding: 20px 0 !important;
+    margin: 0 !important;
+}
+
+/* Cacher complètement les boutons nav */
+.testimonials-carousel__nav,
+.testimonials-nav-btn,
+#testimonials-prev,
+#testimonials-next {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+}
