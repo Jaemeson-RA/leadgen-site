@@ -2407,7 +2407,7 @@ button {
 #temoignages,
 .flo-testimonials,
 .flo-testimonials.section {
-    background: #f5f7fa !important;
+    background: #fafbfc !important;
     padding: 60px 0 !important;
     margin: 0 !important;
 }
@@ -2442,7 +2442,7 @@ button {
 .pricing.section.section--gray,
 #tarifs {
     background: #ffffff !important;
-    padding-bottom: 30px !important;
+    padding-bottom: 0 !important;
     margin-bottom: 0 !important;
 }
 
@@ -2457,8 +2457,8 @@ button {
 /* TÉMOIGNAGES - fond gris clair */
 .testimonials.section,
 #testimonials {
-    background: #f5f7fa !important;
-    padding: 50px 0 !important;
+    background: #fafbfc !important;
+    padding: 40px 0 !important;
     margin: 0 !important;
 }
 
@@ -2466,6 +2466,33 @@ button {
 .cta.section,
 #contact {
     background: #eef4fb !important;
-    padding: 50px 0 !important;
+    padding: 40px 0 !important;
     margin: 0 !important;
+}
+
+/* ============================================ */
+/* ESPACE MINIMAL ENTRE SECTIONS */
+/* ============================================ */
+
+#tarifs,
+.pricing.section,
+.pricing.section.section--gray {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+#tarifs .container,
+.pricing .container {
+    padding-bottom: 20px !important;
+}
+
+#testimonials,
+.testimonials.section {
+    padding-top: 30px !important;
+    margin-top: 0 !important;
+    background: #fafbfc !important;
+}
+
+.section--gray {
+    background: #ffffff !important;
 }
