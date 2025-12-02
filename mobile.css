@@ -483,6 +483,32 @@
     }
 
 
+
+    
+    /* Égaliser la taille des cartes Avant/Après */
+    .before-after__card {
+        min-height: 420px;
+    }
+    
+    .before-after__card--before,
+    .before-after__card--after {
+        min-height: 420px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .before-after__list {
+        flex: 1;
+    }
+    
+    /* Plus d'espace sous les dots */
+    .before-after__dots {
+        margin-top: 24px;
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+    }
+
+
 @media (max-width: 480px) {
     
     .hero__title {
