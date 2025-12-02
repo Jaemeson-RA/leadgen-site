@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     lucide.createIcons();
+    
+    // DUPLIQUER LES CARTES POUR SCROLL INFINI
+    const track = document.getElementById('testimonials-track');
+    if (track) {
+        const cards = track.innerHTML;
+        track.innerHTML = cards + cards; // Dupliquer pour boucle infinie
+    }
 });
 
 const header = document.getElementById('header');
@@ -18,7 +25,7 @@ if (navToggle) {
     navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navMenu.classList.remove('active')));
 }
 
-// EFFET VAGUE
+// EFFET VAGUE EN BOUCLE
 const howItWorksSection = document.querySelector('.how-it-works');
 if (howItWorksSection) {
     const cards = howItWorksSection.querySelectorAll('.step-card');
@@ -70,67 +77,6 @@ if (employeesSlider) {
         employeesCount.textContent = emp;
         priceDisplay.textContent = Math.round(emp * ppu);
         pricePerUserDisplay.textContent = ppu.toFixed(2);
-    });
-}
-
-// CAROUSEL - SIMPLE (display none/block)
-const slides = document.querySelectorAll('.flo-testimonials-slide');
-const prevBtn = document.getElementById('flo-carousel-prev');
-const nextBtn = document.getElementById('flo-carousel-next');
-const dots = document.querySelectorAll('.flo-testimonials-dot');
-let currentIndex = 0;
-let autoplayInterval;
-const totalSlides = slides.length;
-
-function showSlide(index) {
-    // Cacher toutes les slides
-    slides.forEach(slide => {
-        slide.classList.remove('active');
-        slide.style.display = 'none';
-    });
-    
-    // Afficher la slide courante
-    if (slides[index]) {
-        slides[index].classList.add('active');
-        slides[index].style.display = 'block';
-    }
-    
-    // Mettre à jour dots
-    dots.forEach((dot, i) => dot.classList.toggle('flo-testimonials-dot--active', i === index));
-}
-
-function nextSlide() {
-    currentIndex = (currentIndex + 1) % totalSlides;
-    showSlide(currentIndex);
-}
-
-function prevSlide() {
-    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-    showSlide(currentIndex);
-}
-
-function startAutoplay() {
-    autoplayInterval = setInterval(nextSlide, 5000);
-}
-
-function stopAutoplay() {
-    clearInterval(autoplayInterval);
-}
-
-if (slides.length > 0) {
-    showSlide(0);
-    startAutoplay();
-    
-    if (prevBtn) prevBtn.addEventListener('click', () => { stopAutoplay(); prevSlide(); startAutoplay(); });
-    if (nextBtn) nextBtn.addEventListener('click', () => { stopAutoplay(); nextSlide(); startAutoplay(); });
-    
-    dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => {
-            stopAutoplay();
-            currentIndex = i;
-            showSlide(currentIndex);
-            startAutoplay();
-        });
     });
 }
 

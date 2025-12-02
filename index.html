@@ -387,8 +387,8 @@
         </div>
     </section>
 
-    <!-- ============================================ -->
-    <!-- TÉMOIGNAGES - CARROUSEL 3D -->
+        <!-- ============================================ -->
+    <!-- TÉMOIGNAGES - CARROUSEL HORIZONTAL -->
     <!-- ============================================ -->
     <section class="testimonials section" id="testimonials">
         <div class="container">
@@ -396,189 +396,118 @@
                 <h2 class="section__title">Ils ont transformé leur organisation avec FLO</h2>
             </div>
             
-            <!-- Carrousel 3D Container -->
-            <div class="flo-testimonials-carousel">
-                <div class="flo-testimonials-carousel-wrapper">
-                    <!-- Bouton Précédent -->
-                    <button class="flo-testimonials-nav flo-testimonials-nav--prev" id="flo-carousel-prev" aria-label="Témoignage précédent">
-                        <i data-lucide="chevron-left"></i>
-                    </button>
+            <!-- Carrousel Horizontal -->
+            <div class="testimonials-carousel">
+                <div class="testimonials-carousel__track" id="testimonials-track">
                     
-                    <!-- Track du carrousel -->
-                    <div class="flo-testimonials-track" id="flo-testimonials-track">
-                    <!-- Slide 1 -->
-                    <div class="flo-testimonials-slide" data-index="0">
-                        <div class="testimonial-card">
-                            <div class="testimonial-card__quote">
-                                <i data-lucide="quote"></i>
-                                <p>"FLO nous a permis de passer de 15 à 40 employés sans perdre en efficacité. Tous nos process sont documentés et accessibles en un clic."</p>
-                            </div>
-                            <div class="testimonial-card__author">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%234A90E2' width='60' height='60'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23fff'%3EML%3C/text%3E%3C/svg%3E" alt="Marie Legrand" class="testimonial-card__avatar">
-                                <div class="testimonial-card__info">
-                                    <p class="testimonial-card__name">Marie Legrand</p>
-                                    <p class="testimonial-card__title">DRH - TechStart</p>
-                                </div>
+                    <div class="testimonial-card" data-category="RH">
+                        <div class="testimonial-card__badge">RH</div>
+                        <div class="testimonial-card__content">
+                            <div class="testimonial-card__quote">"</div>
+                            <p class="testimonial-card__text">FLO nous a permis de passer de 15 à 40 employés sans perdre en efficacité. Tous nos process sont documentés et accessibles en un clic.</p>
+                        </div>
+                        <div class="testimonial-card__author">
+                            <div class="testimonial-card__avatar" style="background: #4A90E2;">ML</div>
+                            <div class="testimonial-card__info">
+                                <p class="testimonial-card__name">Marie Legrand</p>
+                                <p class="testimonial-card__company">DRH - TechStart</p>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Slide 2 -->
-                    <div class="flo-testimonials-slide" data-index="1">
-                        <div class="testimonial-card">
-                            <div class="testimonial-card__quote">
-                                <i data-lucide="quote"></i>
-                                <p>"Notre onboarding qui prenait 3 semaines prend maintenant 2 jours. Les nouveaux collaborateurs sont autonomes dès le premier jour."</p>
-                            </div>
-                            <div class="testimonial-card__author">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%2320C997' width='60' height='60'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23fff'%3ETD%3C/text%3E%3C/svg%3E" alt="Thomas Dubois" class="testimonial-card__avatar">
-                                <div class="testimonial-card__info">
-                                    <p class="testimonial-card__name">Thomas Dubois</p>
-                                    <p class="testimonial-card__title">CEO - GrowthLab</p>
-                                </div>
+                    <div class="testimonial-card" data-category="Recrutement">
+                        <div class="testimonial-card__badge">Recrutement</div>
+                        <div class="testimonial-card__content">
+                            <div class="testimonial-card__quote">"</div>
+                            <p class="testimonial-card__text">Notre onboarding qui prenait 2 jours se fait maintenant en 3 heures. Les nouveaux sont autonomes dès le premier jour.</p>
+                        </div>
+                        <div class="testimonial-card__author">
+                            <div class="testimonial-card__avatar" style="background: #20C997;">TD</div>
+                            <div class="testimonial-card__info">
+                                <p class="testimonial-card__name">Thomas Dubois</p>
+                                <p class="testimonial-card__company">CEO - GrowthLab</p>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Slide 3 -->
-                    <div class="flo-testimonials-slide" data-index="2">
-                        <div class="testimonial-card">
-                            <div class="testimonial-card__quote">
-                                <i data-lucide="quote"></i>
-                                <p>"Fini les emails perdus et les informations dispersées. FLO est devenu notre source de vérité unique pour tous nos process internes."</p>
-                            </div>
-                            <div class="testimonial-card__author">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%23F59E0B' width='60' height='60'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23fff'%3ESM%3C/text%3E%3C/svg%3E" alt="Sophie Martin" class="testimonial-card__avatar">
-                                <div class="testimonial-card__info">
-                                    <p class="testimonial-card__name">Sophie Martin</p>
-                                    <p class="testimonial-card__title">COO - InnovateCo</p>
-                                </div>
+                    <div class="testimonial-card" data-category="Marketing">
+                        <div class="testimonial-card__badge">Marketing</div>
+                        <div class="testimonial-card__content">
+                            <div class="testimonial-card__quote">"</div>
+                            <p class="testimonial-card__text">Fini les emails perdus et les informations éparpillées. FLO est devenu notre source de vérité unique pour tous nos process internes.</p>
+                        </div>
+                        <div class="testimonial-card__author">
+                            <div class="testimonial-card__avatar" style="background: #F59E0B;">SM</div>
+                            <div class="testimonial-card__info">
+                                <p class="testimonial-card__name">Sophie Martin</p>
+                                <p class="testimonial-card__company">CMO - InnovateCo</p>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Slide 4 -->
-                    <div class="flo-testimonials-slide" data-index="3">
-                        <div class="testimonial-card">
-                            <div class="testimonial-card__quote">
-                                <i data-lucide="quote"></i>
-                                <p>"FLO a révolutionné notre gestion RH. Plus besoin de chercher les informations dans 10 outils différents, tout est centralisé et structuré."</p>
-                            </div>
-                            <div class="testimonial-card__author">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%23EF4444' width='60' height='60'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23fff'%3EJD%3C/text%3E%3C/svg%3E" alt="Julie Durand" class="testimonial-card__avatar">
-                                <div class="testimonial-card__info">
-                                    <p class="testimonial-card__name">Julie Durand</p>
-                                    <p class="testimonial-card__title">Responsable RH - DigitalCorp</p>
-                                </div>
+                    <div class="testimonial-card" data-category="Operations">
+                        <div class="testimonial-card__badge">Operations</div>
+                        <div class="testimonial-card__content">
+                            <div class="testimonial-card__quote">"</div>
+                            <p class="testimonial-card__text">Nos process de recrutement sont maintenant standardisés. Chaque manager sait exactement quoi faire à chaque étape.</p>
+                        </div>
+                        <div class="testimonial-card__author">
+                            <div class="testimonial-card__avatar" style="background: #8B5CF6;">AL</div>
+                            <div class="testimonial-card__info">
+                                <p class="testimonial-card__name">Antoine Leroux</p>
+                                <p class="testimonial-card__company">Directeur Talent - ScaleUp</p>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Slide 5 -->
-                    <div class="flo-testimonials-slide" data-index="4">
-                        <div class="testimonial-card">
-                            <div class="testimonial-card__quote">
-                                <i data-lucide="quote"></i>
-                                <p>"Nos process de recrutement sont maintenant standardisés. Chaque manager sait exactement quoi faire à chaque étape."</p>
-                            </div>
-                            <div class="testimonial-card__author">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%238B5CF6' width='60' height='60'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23fff'%3EAL%3C/text%3E%3C/svg%3E" alt="Antoine Leroux" class="testimonial-card__avatar">
-                                <div class="testimonial-card__info">
-                                    <p class="testimonial-card__name">Antoine Leroux</p>
-                                    <p class="testimonial-card__title">Directeur Talent - ScaleUp</p>
-                                </div>
+                    <div class="testimonial-card" data-category="Finance">
+                        <div class="testimonial-card__badge">Finance</div>
+                        <div class="testimonial-card__content">
+                            <div class="testimonial-card__quote">"</div>
+                            <p class="testimonial-card__text">La clarté des process a réduit nos erreurs de 60%. Tout est tracé, auditable et nos équipes gagnent un temps précieux.</p>
+                        </div>
+                        <div class="testimonial-card__author">
+                            <div class="testimonial-card__avatar" style="background: #EC4899;">CB</div>
+                            <div class="testimonial-card__info">
+                                <p class="testimonial-card__name">Claire Bernard</p>
+                                <p class="testimonial-card__company">DAF - FinanceFirst</p>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Slide 6 -->
-                    <div class="flo-testimonials-slide" data-index="5">
-                        <div class="testimonial-card">
-                            <div class="testimonial-card__quote">
-                                <i data-lucide="quote"></i>
-                                <p>"La formation de nos équipes n'a jamais été aussi simple. Les parcours sont clairs et le suivi automatique nous fait gagner un temps précieux."</p>
-                            </div>
-                            <div class="testimonial-card__author">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%2310B981' width='60' height='60'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23fff'%3ECB%3C/text%3E%3C/svg%3E" alt="Claire Bernard" class="testimonial-card__avatar">
-                                <div class="testimonial-card__info">
-                                    <p class="testimonial-card__name">Claire Bernard</p>
-                                    <p class="testimonial-card__title">Responsable Formation - EdTech Pro</p>
-                                </div>
+                    <div class="testimonial-card" data-category="IT">
+                        <div class="testimonial-card__badge">IT</div>
+                        <div class="testimonial-card__content">
+                            <div class="testimonial-card__quote">"</div>
+                            <p class="testimonial-card__text">Grâce à FLO, même depuis l'équipe IT, on a pu créer et déployer des process très simplement. Un gain de temps précieux!</p>
+                        </div>
+                        <div class="testimonial-card__author">
+                            <div class="testimonial-card__avatar" style="background: #14B8A6;">PR</div>
+                            <div class="testimonial-card__info">
+                                <p class="testimonial-card__name">Pierre Roux</p>
+                                <p class="testimonial-card__company">CTO - DataFlow</p>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Slide 7 -->
-                    <div class="flo-testimonials-slide" data-index="6">
-                        <div class="testimonial-card">
-                            <div class="testimonial-card__quote">
-                                <i data-lucide="quote"></i>
-                                <p>"Grâce à FLO, notre équipe a doublé de taille sans chaos. Chaque nouveau arrivant est opérationnel immédiatement."</p>
-                            </div>
-                            <div class="testimonial-card__author">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%23F59E0B' width='60' height='60'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23fff'%3EPN%3C/text%3E%3C/svg%3E" alt="Pierre Noir" class="testimonial-card__avatar">
-                                <div class="testimonial-card__info">
-                                    <p class="testimonial-card__name">Pierre Noir</p>
-                                    <p class="testimonial-card__title">Fondateur - StartupHouse</p>
-                                </div>
+                    <div class="testimonial-card" data-category="Formation">
+                        <div class="testimonial-card__badge">Formation</div>
+                        <div class="testimonial-card__content">
+                            <div class="testimonial-card__quote">"</div>
+                            <p class="testimonial-card__text">Les formations internes sont maintenant structurées et suivies. On voit clairement qui a complété quoi.</p>
+                        </div>
+                        <div class="testimonial-card__author">
+                            <div class="testimonial-card__avatar" style="background: #F97316;">LR</div>
+                            <div class="testimonial-card__info">
+                                <p class="testimonial-card__name">Laura Renaud</p>
+                                <p class="testimonial-card__company">L&D Manager - EduTech</p>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Slide 8 -->
-                    <div class="flo-testimonials-slide" data-index="7">
-                        <div class="testimonial-card">
-                            <div class="testimonial-card__quote">
-                                <i data-lucide="quote"></i>
-                                <p>"Tous nos documents RH sont enfin au même endroit avec un système de versioning. Fini les erreurs de version !"</p>
-                            </div>
-                            <div class="testimonial-card__author">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%2306B6D4' width='60' height='60'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23fff'%3ELR%3C/text%3E%3C/svg%3E" alt="Laura Rousseau" class="testimonial-card__avatar">
-                                <div class="testimonial-card__info">
-                                    <p class="testimonial-card__name">Laura Rousseau</p>
-                                    <p class="testimonial-card__title">Office Manager - CreativeHub</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Slide 9 -->
-                    <div class="flo-testimonials-slide" data-index="8">
-                        <div class="testimonial-card">
-                            <div class="testimonial-card__quote">
-                                <i data-lucide="quote"></i>
-                                <p>"FLO nous a permis de scaler sans perdre notre culture d'entreprise. Les valeurs et les process sont transmis efficacement."</p>
-                            </div>
-                            <div class="testimonial-card__author">
-                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%23EC4899' width='60' height='60'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='24' fill='%23fff'%3EMV%3C/text%3E%3C/svg%3E" alt="Marc Vidal" class="testimonial-card__avatar">
-                                <div class="testimonial-card__info">
-                                    <p class="testimonial-card__name">Marc Vidal</p>
-                                    <p class="testimonial-card__title">VP Operations - FastGrow</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    
-                    <!-- Bouton Suivant -->
-                    <button class="flo-testimonials-nav flo-testimonials-nav--next" id="flo-carousel-next" aria-label="Témoignage suivant">
-                        <i data-lucide="chevron-right"></i>
-                    </button>
-                </div>
-                
-                <!-- Dots Navigation -->
-                <div class="flo-testimonials-dots" id="flo-testimonials-dots">
-                    <button class="flo-testimonials-dot flo-testimonials-dot--active" data-index="0" aria-label="Aller au témoignage 1"></button>
-                    <button class="flo-testimonials-dot" data-index="1" aria-label="Aller au témoignage 2"></button>
-                    <button class="flo-testimonials-dot" data-index="2" aria-label="Aller au témoignage 3"></button>
-                    <button class="flo-testimonials-dot" data-index="3" aria-label="Aller au témoignage 4"></button>
-                    <button class="flo-testimonials-dot" data-index="4" aria-label="Aller au témoignage 5"></button>
-                    <button class="flo-testimonials-dot" data-index="5" aria-label="Aller au témoignage 6"></button>
-                    <button class="flo-testimonials-dot" data-index="6" aria-label="Aller au témoignage 7"></button>
-                    <button class="flo-testimonials-dot" data-index="7" aria-label="Aller au témoignage 8"></button>
-                    <button class="flo-testimonials-dot" data-index="8" aria-label="Aller au témoignage 9"></button>
                 </div>
             </div>
+            
         </div>
     </section>
 
@@ -809,7 +738,3 @@
                     <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
                     <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
              
-    </footer>
-    <script src="script.js"></script>
-</body>
-</html>
