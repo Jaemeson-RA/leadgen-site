@@ -2433,3 +2433,39 @@ button {
 .pricing__simulator {
     margin: 0 auto !important;
 }
+
+/* ============================================ */
+/* FIX FINAL - BONNES CLASSES */
+/* ============================================ */
+
+/* PRICING - fond blanc, pas de marge en bas */
+.pricing.section.section--gray,
+#tarifs {
+    background: #ffffff !important;
+    padding-bottom: 30px !important;
+    margin-bottom: 0 !important;
+}
+
+.pricing__simulator {
+    margin-bottom: 20px !important;
+}
+
+.pricing__plans {
+    margin-top: 0 !important;
+}
+
+/* TÉMOIGNAGES - fond gris clair */
+.testimonials.section,
+#testimonials {
+    background: #f5f7fa !important;
+    padding: 50px 0 !important;
+    margin: 0 !important;
+}
+
+/* CTA/FORMULAIRE - fond bleu léger */
+.cta.section,
+#contact {
+    background: #eef4fb !important;
+    padding: 50px 0 !important;
+    margin: 0 !important;
+}
