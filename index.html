@@ -211,40 +211,30 @@
                 <p class="section__subtitle">Trois étapes simples pour transformer votre organisation</p>
             </div>
             
-            <div class="steps-container">
-                
-                <div class="step-item" data-step="1">
-                    <div class="step-item__icon">
+            <div class="steps-row">
+                <div class="step-box" id="step-1">
+                    <div class="step-box__icon">
                         <i data-lucide="plus-circle"></i>
                     </div>
-                    <h3 class="step-item__title">Créer</h3>
-                    <p class="step-item__text">Créez vos process en quelques clics avec notre éditeur intuitif. Templates prêts à l'emploi ou création sur-mesure.</p>
+                    <h3 class="step-box__title">Créer</h3>
+                    <p class="step-box__text">Créez vos process en quelques clics avec notre éditeur intuitif. Templates prêts à l'emploi ou création sur-mesure.</p>
                 </div>
                 
-                <div class="step-arrow">
-                    <i data-lucide="arrow-right"></i>
-                </div>
-                
-                <div class="step-item" data-step="2">
-                    <div class="step-item__icon">
+                <div class="step-box" id="step-2">
+                    <div class="step-box__icon">
                         <i data-lucide="layers"></i>
                     </div>
-                    <h3 class="step-item__title">Structurer</h3>
-                    <p class="step-item__text">Organisez vos workflows par service, département ou projet. Assignez des responsables et définissez les étapes.</p>
+                    <h3 class="step-box__title">Structurer</h3>
+                    <p class="step-box__text">Organisez vos workflows par service, département ou projet. Assignez des responsables et définissez les étapes.</p>
                 </div>
                 
-                <div class="step-arrow">
-                    <i data-lucide="arrow-right"></i>
-                </div>
-                
-                <div class="step-item" data-step="3">
-                    <div class="step-item__icon">
+                <div class="step-box" id="step-3">
+                    <div class="step-box__icon">
                         <i data-lucide="activity"></i>
                     </div>
-                    <h3 class="step-item__title">Suivre</h3>
-                    <p class="step-item__text">Suivez l'avancement en temps réel, identifiez les blocages et optimisez continuellement vos process.</p>
+                    <h3 class="step-box__title">Suivre</h3>
+                    <p class="step-box__text">Suivez l'avancement en temps réel, identifiez les blocages et optimisez continuellement vos process.</p>
                 </div>
-                
             </div>
         </div>
     </section>
@@ -456,7 +446,16 @@
                 </div>
             </div>
             
+            <div class="testimonials-carousel__nav">
+                <button class="testimonials-nav-btn" id="testimonials-prev" aria-label="Précédent">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+                <button class="testimonials-nav-btn" id="testimonials-next" aria-label="Suivant">
+                    <i data-lucide="chevron-right"></i>
+                </button>
             </div>
+            
+        </div>
     </section>
 
     <!-- ============================================ -->
@@ -685,4 +684,12 @@
                     <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
                     <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
                     <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
-             
+                </div>
+            </div>
+        </footer>
+    </main>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="script.js"></script>
+</body>
+</html>

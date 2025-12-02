@@ -1,88 +1,92 @@
+// ============================================
+// INITIALISATION AU CHARGEMENT
+// ============================================
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialiser les icônes Lucide
+    // Initialiser Lucide icons
     lucide.createIcons();
     
-    // CARROUSEL TÉMOIGNAGES - BOUCLE INFINIE
+    // Démarrer l'effet vague
+    startWaveEffect();
+    
+    // Carrousel témoignages
+    initTestimonialsCarousel();
+});
+
+// ============================================
+// EFFET VAGUE BLEU - COMMENT ÇA MARCHE
+// ============================================
+function startWaveEffect() {
+    const boxes = document.querySelectorAll('.step-box');
+    
+    if (boxes.length === 0) return;
+    
+    let currentIndex = 0;
+    
+    // Activer la première carte
+    boxes[0].classList.add('active');
+    
+    // Changer de carte toutes les 1.5 secondes
+    setInterval(function() {
+        // Désactiver toutes les cartes
+        boxes.forEach(box => box.classList.remove('active'));
+        
+        // Passer à la carte suivante
+        currentIndex = (currentIndex + 1) % boxes.length;
+        
+        // Activer la nouvelle carte
+        boxes[currentIndex].classList.add('active');
+    }, 1500);
+}
+
+// ============================================
+// CARROUSEL TÉMOIGNAGES
+// ============================================
+function initTestimonialsCarousel() {
     const track = document.getElementById('testimonials-track');
     if (track) {
-        const cards = track.children;
-        const cardsArray = Array.from(cards);
-        cardsArray.forEach(card => {
+        const cards = Array.from(track.children);
+        cards.forEach(card => {
             const clone = card.cloneNode(true);
             track.appendChild(clone);
         });
     }
-});
+}
 
-// Header scroll effect
+// ============================================
+// HEADER SCROLL
+// ============================================
 const header = document.getElementById('header');
-window.addEventListener('scroll', function() {
-    if (window.scrollY > 100) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
-});
+if (header) {
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+}
 
-// Navigation mobile
+// ============================================
+// NAVIGATION MOBILE
+// ============================================
 const navToggle = document.getElementById('nav-toggle');
 const navMenu = document.querySelector('.nav__menu');
-if (navToggle) {
-    navToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-    document.addEventListener('click', (e) => {
-        if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) navMenu.classList.remove('active');
+
+if (navToggle && navMenu) {
+    navToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
     });
-    navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navMenu.classList.remove('active')));
-}
-
-// ============================================
-// COMMENT ÇA MARCHE - EFFET VAGUE BLEU
-// ============================================
-const howItWorksSection = document.querySelector('.how-it-works');
-if (howItWorksSection) {
-    const items = howItWorksSection.querySelectorAll('.step-item');
-    let currentIndex = 0;
-    let waveInterval = null;
     
-    function activateItem(index) {
-        items.forEach((item, i) => {
-            if (i === index) {
-                item.classList.add('active');
-            } else {
-                item.classList.remove('active');
-            }
-        });
-    }
-    
-    function startWave() {
-        if (waveInterval) return;
-        activateItem(0);
-        currentIndex = 0;
-        waveInterval = setInterval(() => {
-            currentIndex = (currentIndex + 1) % items.length;
-            activateItem(currentIndex);
-        }, 1500);
-    }
-    
-    function stopWave() {
-        if (waveInterval) {
-            clearInterval(waveInterval);
-            waveInterval = null;
+    document.addEventListener('click', function(e) {
+        if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+            navMenu.classList.remove('active');
         }
-        items.forEach(item => item.classList.remove('active'));
-    }
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                startWave();
-            } else {
-                stopWave();
-            }
-        });
-    }, { threshold: 0.3 });
-    
-    observer.observe(howItWorksSection);
+    });
 }
 
+// ============================================
 // PRICING SLIDER
+// ============================================
 const employeesSlider = document.getElementById('employees');
 if (employeesSlider) {
     const employeesCount = document.getElementById('employees-count');
@@ -91,41 +95,66 @@ if (employeesSlider) {
     
     employeesSlider.addEventListener('input', function() {
         const emp = parseInt(this.value);
-        let ppu = emp <= 10 ? 7.90 : emp <= 50 ? 6.90 : emp <= 100 ? 5.90 : emp <= 200 ? 4.90 : 3.90;
+        let ppu;
+        if (emp <= 10) ppu = 7.90;
+        else if (emp <= 50) ppu = 6.90;
+        else if (emp <= 100) ppu = 5.90;
+        else if (emp <= 200) ppu = 4.90;
+        else ppu = 3.90;
+        
         employeesCount.textContent = emp;
         priceDisplay.textContent = Math.round(emp * ppu);
         pricePerUserDisplay.textContent = ppu.toFixed(2);
     });
 }
 
-// FAQ
-document.querySelectorAll('.faq-item').forEach(item => {
+// ============================================
+// FAQ ACCORDION
+// ============================================
+document.querySelectorAll('.faq-item').forEach(function(item) {
     const question = item.querySelector('.faq-item__question');
     const answer = item.querySelector('.faq-item__answer');
-    question.addEventListener('click', () => {
-        const isOpen = item.classList.contains('active');
-        document.querySelectorAll('.faq-item').forEach(i => {
-            i.classList.remove('active');
-            i.querySelector('.faq-item__answer').style.maxHeight = null;
+    
+    if (question && answer) {
+        question.addEventListener('click', function() {
+            const isOpen = item.classList.contains('active');
+            
+            // Fermer tous les autres
+            document.querySelectorAll('.faq-item').forEach(function(i) {
+                i.classList.remove('active');
+                const a = i.querySelector('.faq-item__answer');
+                if (a) a.style.maxHeight = null;
+            });
+            
+            // Ouvrir celui-ci si fermé
+            if (!isOpen) {
+                item.classList.add('active');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
         });
-        if (!isOpen) { 
-            item.classList.add('active'); 
-            answer.style.maxHeight = answer.scrollHeight + 'px'; 
-        }
-    });
+    }
 });
 
+// ============================================
 // SMOOTH SCROLL
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+// ============================================
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
-        if (href === '#') { e.preventDefault(); return; }
-        const target = document.querySelector(href);
-        if (target) {
+        if (href === '#') {
             e.preventDefault();
-            window.scrollTo({ 
-                top: target.getBoundingClientRect().top + window.pageYOffset - header.offsetHeight, 
-                behavior: 'smooth' 
+            return;
+        }
+        
+        const target = document.querySelector(href);
+        if (target && header) {
+            e.preventDefault();
+            const offset = header.offsetHeight;
+            const position = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            
+            window.scrollTo({
+                top: position,
+                behavior: 'smooth'
             });
         }
     });
