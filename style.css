@@ -327,10 +327,10 @@ button {
 /* ============================================ */
 
 .hero {
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
     align-items: center;
-    padding: 120px 0 80px;
+    padding: 60px 0 40px;
     background: linear-gradient(135deg, #f8fafc 0%, #e8f3ff 100%);
     position: relative;
     overflow: hidden;
