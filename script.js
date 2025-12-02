@@ -1,20 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialiser les icônes Lucide
     lucide.createIcons();
     
-    // DUPLIQUER LES CARTES TÉMOIGNAGES POUR SCROLL INFINI
+    // CARROUSEL TÉMOIGNAGES - BOUCLE INFINIE
     const track = document.getElementById('testimonials-track');
     if (track) {
-        const cards = track.innerHTML;
-        track.innerHTML = cards + cards;
+        // Dupliquer les cartes pour créer une boucle infinie seamless
+        const originalCards = track.innerHTML;
+        track.innerHTML = originalCards + originalCards;
+        console.log('Carrousel témoignages: cartes dupliquées pour boucle infinie');
     }
 });
 
+// Header scroll effect
 const header = document.getElementById('header');
 window.addEventListener('scroll', function() {
     if (window.scrollY > 100) header.classList.add('scrolled');
     else header.classList.remove('scrolled');
 });
 
+// Navigation mobile
 const navToggle = document.getElementById('nav-toggle');
 const navMenu = document.querySelector('.nav__menu');
 if (navToggle) {
@@ -60,7 +65,6 @@ if (howItWorksSection) {
         cards.forEach(card => card.classList.remove('active'));
     }
     
-    // Démarrer immédiatement si visible
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -74,7 +78,7 @@ if (howItWorksSection) {
     observer.observe(howItWorksSection);
 }
 
-// PRICING
+// PRICING SLIDER
 const employeesSlider = document.getElementById('employees');
 if (employeesSlider) {
     const employeesCount = document.getElementById('employees-count');

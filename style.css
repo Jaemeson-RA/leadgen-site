@@ -2952,3 +2952,29 @@ html, body {
     width: 0 !important;
     overflow: hidden !important;
 }
+
+
+/* ============================================ */
+/* CARROUSEL INFINI - CORRECTION FINALE */
+/* ============================================ */
+
+.testimonials-carousel__track {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0 !important;
+    width: max-content !important;
+    animation: scroll-infinite 45s linear infinite !important;
+}
+
+@keyframes scroll-infinite {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.testimonials-carousel__track:hover {
+    animation-play-state: paused !important;
+}
