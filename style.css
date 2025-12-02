@@ -2362,3 +2362,39 @@ button {
     padding-top: 40px !important;
     margin-top: 0 !important;
 }
+
+/* ============================================ */
+/* FIX ESPACEMENT - TRÈS AGRESSIF */
+/* ============================================ */
+
+#tarifs,
+#tarifs.section,
+.pricing,
+.pricing.section {
+    padding-top: 60px !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.pricing__simulator {
+    margin: 0 auto !important;
+    margin-bottom: 0 !important;
+}
+
+.pricing .container,
+#tarifs .container {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.pricing-card,
+.simulator {
+    margin-bottom: 0 !important;
+}
+
+#temoignages,
+.flo-testimonials,
+.flo-testimonials.section {
+    padding-top: 60px !important;
+    margin-top: 0 !important;
+}
