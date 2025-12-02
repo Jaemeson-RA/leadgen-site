@@ -572,7 +572,6 @@ button {
 }
 
 
-
 /* Animation d'apparition de la vidéo */
 .hero__visual {
     opacity: 0;
@@ -600,7 +599,6 @@ button {
         border-radius: var(--radius-md);
     }
 }
-
 
 /* ============================================ */
 /* PROBLEMES → SOLUTIONS */
@@ -764,7 +762,6 @@ button {
     transform-style: preserve-3d;
 }
 
-/* Effet flip au hover sur desktop */
 @media (hover: hover) and (pointer: fine) {
     .step-card:hover .step-card__inner {
         transform: rotateY(180deg);
@@ -879,7 +876,7 @@ button {
         min-height: 420px;
     }
     
-    /* Sur mobile : carrousel interne au lieu de flip */
+    
     .step-card__inner {
         position: relative;
         overflow: visible;
@@ -2424,7 +2421,6 @@ html, body {
     animation-play-state: paused;
 }
 
-
     100% { transform: translateX(-50%); }
 }
 
@@ -2581,7 +2577,6 @@ html, body {
     }
 }
 
-
 /* ============================================ */
 /* FIX URGENT - STEP CARDS VISIBLES */
 /* ============================================ */
@@ -2610,7 +2605,6 @@ html, body {
     animation: scroll-testimonials 35s linear infinite;
     width: max-content;
 }
-
 
 /* ============================================ */
 /* TÉMOIGNAGES - CARROUSEL CENTRÉ AVEC VAGUE */
@@ -2675,7 +2669,6 @@ html, body {
 .testimonials-carousel__track:hover {
     animation-play-state: paused;
 }
-
 
     100% { transform: translateX(-50%); }
 }
@@ -2876,7 +2869,6 @@ html, body {
     display: none !important;
 }
 
-
 /* Cacher les points de navigation */
 .testimonials-carousel__nav {
     display: none !important;
@@ -2893,7 +2885,6 @@ html, body {
     padding-left: 0 !important;
     gap: 0 !important;
 }
-
 
 /* ============================================ */
 /* CARROUSEL TÉMOIGNAGES - CORRECTIONS FINALES */
@@ -2951,7 +2942,6 @@ html, body {
     overflow: hidden !important;
 }
 
-
 /* ============================================ */
 /* CARROUSEL INFINI - CORRECTION FINALE */
 /* ============================================ */
@@ -2964,7 +2954,6 @@ html, body {
     animation: scroll-infinite 45s linear infinite !important;
 }
 
-
     100% {
         transform: translateX(-50%);
     }
@@ -2973,7 +2962,6 @@ html, body {
 .testimonials-carousel__track:hover {
     animation-play-state: paused !important;
 }
-
 
 /* ============================================ */
 /* CARROUSEL TÉMOIGNAGES - DÉFILEMENT INFINI */
@@ -3077,7 +3065,6 @@ html, body {
 .testimonials-carousel__nav {
     display: none !important;
 }
-
 
 /* ============================================ */
 /* COMMENT ÇA MARCHE - EFFET BLEU PROGRESSIF */
@@ -3219,18 +3206,11 @@ html, body {
     transition: color 0.6s ease;
 }
 
-/* Effet de pulse quand actif */
-@keyframes pulse-card {
-    0%, 100% {
-        transform: translateY(-8px) scale(1.02);
-    }
-    50% {
-        transform: translateY(-10px) scale(1.03);
-    }
+
 }
 
 .step-card.active .step-card__front {
-    animation: pulse-card 2s ease-in-out infinite;
+    
 }
 
 /* RESPONSIVE */
@@ -3271,5 +3251,152 @@ html, body {
     
     .step-card__text {
         font-size: 0.95rem;
+    }
+}
+
+/* ============================================ */
+/* COMMENT ÇA MARCHE - EFFET VAGUE BLEU SIMPLE */
+/* ============================================ */
+
+.how-it-works {
+    background: var(--color-white);
+    overflow: visible;
+}
+
+.steps-cards {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.step__arrow {
+    color: var(--color-primary);
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+    flex-shrink: 0;
+    transition: opacity 0.4s ease;
+}
+
+.step__arrow i {
+    width: 32px;
+    height: 32px;
+}
+
+/* Cartes */
+.step-card {
+    flex: 1;
+    max-width: 320px;
+}
+
+.step-card__inner {
+    height: 100%;
+}
+
+.step-card__front {
+    background: #fff;
+    border: 2px solid #e2e8f0;
+    border-radius: 24px;
+    padding: 40px 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    height: 100%;
+    min-height: 320px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.5s ease;
+}
+
+.step-card__back {
+    display: none !important;
+}
+
+/* État ACTIF - Fond bleu */
+.step-card.active .step-card__front {
+    background: #4A90E2 !important;
+    border-color: #4A90E2 !important;
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(74, 144, 226, 0.35);
+}
+
+.step-card.active .step-card__title {
+    color: #fff !important;
+}
+
+.step-card.active .step-card__text {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.step-card.active .step-card__icon {
+    background: #fff !important;
+    color: #4A90E2 !important;
+}
+
+/* Icône */
+.step-card__icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #4A90E2, #20C997);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: all 0.5s ease;
+}
+
+.step-card__icon i {
+    width: 32px;
+    height: 32px;
+}
+
+/* Titre */
+.step-card__title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1a202c;
+    transition: color 0.5s ease;
+}
+
+/* Description */
+.step-card__text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #64748b;
+    transition: color 0.5s ease;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .steps-cards {
+        flex-direction: column;
+        gap: 24px;
+    }
+    
+    .step__arrow {
+        transform: rotate(90deg);
+    }
+    
+    .step-card {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .step-card__front {
+        padding: 30px 24px;
+        min-height: 280px;
+    }
+    
+    .step-card__title {
+        font-size: 1.25rem;
     }
 }
