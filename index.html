@@ -387,8 +387,8 @@
         </div>
     </section>
 
-        <!-- ============================================ -->
-    <!-- TÉMOIGNAGES - CARROUSEL HORIZONTAL -->
+            <!-- ============================================ -->
+    <!-- TÉMOIGNAGES - CARROUSEL SUPERPOSÉ -->
     <!-- ============================================ -->
     <section class="testimonials section" id="testimonials">
         <div class="container">
@@ -396,11 +396,11 @@
                 <h2 class="section__title">Ils ont transformé leur organisation avec FLO</h2>
             </div>
             
-            <!-- Carrousel Horizontal -->
+            <!-- Carrousel Cartes Superposées -->
             <div class="testimonials-carousel">
                 <div class="testimonials-carousel__track" id="testimonials-track">
                     
-                    <div class="testimonial-card" data-category="RH">
+                    <div class="testimonial-card" data-index="0">
                         <div class="testimonial-card__badge">RH</div>
                         <div class="testimonial-card__content">
                             <div class="testimonial-card__quote">"</div>
@@ -415,7 +415,7 @@
                         </div>
                     </div>
                     
-                    <div class="testimonial-card" data-category="Recrutement">
+                    <div class="testimonial-card" data-index="1">
                         <div class="testimonial-card__badge">Recrutement</div>
                         <div class="testimonial-card__content">
                             <div class="testimonial-card__quote">"</div>
@@ -430,7 +430,7 @@
                         </div>
                     </div>
                     
-                    <div class="testimonial-card" data-category="Marketing">
+                    <div class="testimonial-card" data-index="2">
                         <div class="testimonial-card__badge">Marketing</div>
                         <div class="testimonial-card__content">
                             <div class="testimonial-card__quote">"</div>
@@ -445,7 +445,7 @@
                         </div>
                     </div>
                     
-                    <div class="testimonial-card" data-category="Operations">
+                    <div class="testimonial-card" data-index="3">
                         <div class="testimonial-card__badge">Operations</div>
                         <div class="testimonial-card__content">
                             <div class="testimonial-card__quote">"</div>
@@ -460,7 +460,7 @@
                         </div>
                     </div>
                     
-                    <div class="testimonial-card" data-category="Finance">
+                    <div class="testimonial-card" data-index="4">
                         <div class="testimonial-card__badge">Finance</div>
                         <div class="testimonial-card__content">
                             <div class="testimonial-card__quote">"</div>
@@ -475,7 +475,7 @@
                         </div>
                     </div>
                     
-                    <div class="testimonial-card" data-category="IT">
+                    <div class="testimonial-card" data-index="5">
                         <div class="testimonial-card__badge">IT</div>
                         <div class="testimonial-card__content">
                             <div class="testimonial-card__quote">"</div>
@@ -490,7 +490,7 @@
                         </div>
                     </div>
                     
-                    <div class="testimonial-card" data-category="Formation">
+                    <div class="testimonial-card" data-index="6">
                         <div class="testimonial-card__badge">Formation</div>
                         <div class="testimonial-card__content">
                             <div class="testimonial-card__quote">"</div>
@@ -506,6 +506,16 @@
                     </div>
                     
                 </div>
+            </div>
+            
+            <!-- Navigation -->
+            <div class="testimonials-carousel__nav">
+                <button class="testimonials-nav-btn" id="testimonials-prev" aria-label="Précédent">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+                <button class="testimonials-nav-btn" id="testimonials-next" aria-label="Suivant">
+                    <i data-lucide="chevron-right"></i>
+                </button>
             </div>
             
         </div>
