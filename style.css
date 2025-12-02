@@ -2220,12 +2220,13 @@ button {
 }
 
 /* ============================================ */
-/* PRICING - ESPACE RÉDUIT */
+/* PRICING - ESPACE NORMAL */
 /* ============================================ */
 
 #tarifs.section,
 .pricing.section {
-    padding-bottom: 40px !important;
+    padding-bottom: var(--spacing-2xl) !important;
+    margin-bottom: 0 !important;
 }
 
 
@@ -2234,7 +2235,8 @@ button {
 /* ============================================ */
 
 .flo-testimonials.section {
-    padding: var(--spacing-2xl) 0 !important;
+    padding: var(--spacing-xl) 0 var(--spacing-2xl) 0 !important;
+    margin-top: 0 !important;
     background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
 }
 
