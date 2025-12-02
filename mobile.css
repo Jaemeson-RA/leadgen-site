@@ -413,6 +413,73 @@
 /* TRÈS PETITS ÉCRANS (< 480px) */
 /* ============================================ */
 
+
+    
+    /* ============================================ */
+    /* AVANT/APRÈS - CARROUSEL MOBILE */
+    /* ============================================ */
+    
+    .before-after__grid {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .before-after__card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transform: translateX(30px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        pointer-events: none;
+    }
+    
+    .before-after__card.active {
+        position: relative;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+    }
+    
+    .before-after__card.exit {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    
+    /* Indicateurs de navigation */
+    .before-after__dots {
+        display: flex !important;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 24px;
+    }
+    
+    .before-after__dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #e2e8f0;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+    }
+    
+    .before-after__dot.active {
+        background: #4A90E2;
+        transform: scale(1.2);
+    }
+    
+    .before-after__dot--before.active {
+        background: #ef4444;
+    }
+    
+    .before-after__dot--after.active {
+        background: #20C997;
+    }
+
+
 @media (max-width: 480px) {
     
     .hero__title {
