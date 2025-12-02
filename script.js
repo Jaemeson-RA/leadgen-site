@@ -29,10 +29,17 @@ if (navToggle) {
 const howItWorksSection = document.querySelector('.how-it-works');
 if (howItWorksSection) {
     const cards = howItWorksSection.querySelectorAll('.step-card');
-    let currentActiveIndex = 0, waveInterval = null, hasStarted = false;
+    let currentActiveIndex = 0;
+    let waveInterval = null;
     
     function activateCard(index) {
-        cards.forEach((card, i) => card.classList.toggle('active', i === index));
+        cards.forEach((card, i) => {
+            if (i === index) {
+                card.classList.add('active');
+            } else {
+                card.classList.remove('active');
+            }
+        });
     }
     
     function startWave() {
@@ -46,26 +53,18 @@ if (howItWorksSection) {
     }
     
     function stopWave() {
-        if (waveInterval) { clearInterval(waveInterval); waveInterval = null; }
+        if (waveInterval) {
+            clearInterval(waveInterval);
+            waveInterval = null;
+        }
         cards.forEach(card => card.classList.remove('active'));
     }
     
+    // Démarrer immédiatement si visible
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                if (!hasStarted) {
-                    // Rendre les cartes visibles une par une
-                    cards.forEach((card, i) => {
-                        setTimeout(() => {
-                            card.classList.add('visible');
-                        }, i * 200);
-                    });
-                    // Démarrer l'effet vague après apparition
-                    setTimeout(startWave, 800);
-                    hasStarted = true;
-                } else {
-                    startWave();
-                }
+                startWave();
             } else {
                 stopWave();
             }
@@ -101,7 +100,10 @@ document.querySelectorAll('.faq-item').forEach(item => {
             i.classList.remove('active');
             i.querySelector('.faq-item__answer').style.maxHeight = null;
         });
-        if (!isOpen) { item.classList.add('active'); answer.style.maxHeight = answer.scrollHeight + 'px'; }
+        if (!isOpen) { 
+            item.classList.add('active'); 
+            answer.style.maxHeight = answer.scrollHeight + 'px'; 
+        }
     });
 });
 
@@ -113,7 +115,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const target = document.querySelector(href);
         if (target) {
             e.preventDefault();
-            window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - header.offsetHeight, behavior: 'smooth' });
+            window.scrollTo({ 
+                top: target.getBoundingClientRect().top + window.pageYOffset - header.offsetHeight, 
+                behavior: 'smooth' 
+            });
         }
     });
 });
