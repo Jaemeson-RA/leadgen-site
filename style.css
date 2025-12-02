@@ -2340,3 +2340,25 @@ button {
     .flo-testimonials-slide { padding: 24px; }
     .flo-testimonials-nav { width: 40px; height: 40px; }
 }
+
+/* ============================================ */
+/* FIX ESPACEMENT PRICING → TÉMOIGNAGES */
+/* ============================================ */
+
+#tarifs.section,
+.pricing.section {
+    padding-bottom: 20px !important;
+}
+
+.pricing__simulator {
+    margin-bottom: 0 !important;
+}
+
+.pricing .container {
+    padding-bottom: 0 !important;
+}
+
+.flo-testimonials.section {
+    padding-top: 40px !important;
+    margin-top: 0 !important;
+}
