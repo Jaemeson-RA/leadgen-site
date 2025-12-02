@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     lucide.createIcons();
     
-    // DUPLIQUER LES CARTES POUR SCROLL INFINI
+    // DUPLIQUER LES CARTES TÉMOIGNAGES POUR SCROLL INFINI
     const track = document.getElementById('testimonials-track');
     if (track) {
         const cards = track.innerHTML;
-        track.innerHTML = cards + cards; // Dupliquer pour boucle infinie
+        track.innerHTML = cards + cards;
     }
 });
 
@@ -25,7 +25,7 @@ if (navToggle) {
     navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navMenu.classList.remove('active')));
 }
 
-// EFFET VAGUE EN BOUCLE
+// EFFET VAGUE EN BOUCLE - COMMENT ÇA MARCHE
 const howItWorksSection = document.querySelector('.how-it-works');
 if (howItWorksSection) {
     const cards = howItWorksSection.querySelectorAll('.step-card');
@@ -54,13 +54,24 @@ if (howItWorksSection) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 if (!hasStarted) {
-                    cards.forEach((card, i) => setTimeout(() => card.classList.add('visible'), i * 150));
-                    setTimeout(startWave, 600);
+                    // Rendre les cartes visibles une par une
+                    cards.forEach((card, i) => {
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                        }, i * 200);
+                    });
+                    // Démarrer l'effet vague après apparition
+                    setTimeout(startWave, 800);
                     hasStarted = true;
-                } else startWave();
-            } else stopWave();
+                } else {
+                    startWave();
+                }
+            } else {
+                stopWave();
+            }
         });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.2 });
+    
     observer.observe(howItWorksSection);
 }
 
