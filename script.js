@@ -162,7 +162,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
 
 
 // ============================================
-// AVANT/APRÈS - CARROUSEL MOBILE
+// AVANT/APRÈS - CARROUSEL MOBILE (FONDU FLUIDE)
 // ============================================
 function initBeforeAfterCarousel() {
     // Seulement sur mobile
@@ -176,61 +176,61 @@ function initBeforeAfterCarousel() {
     
     let currentSlide = 0;
     let hasAutoPlayed = false;
+    let isAnimating = false;
     
-    // Activer la première carte
+    // Activer la première carte et le premier dot
     cards[0].classList.add('active');
+    dots[0].classList.add('active');
     
     function goToSlide(index) {
-        // Désactiver la carte actuelle
-        cards[currentSlide].classList.remove('active');
-        cards[currentSlide].classList.add('exit');
+        if (isAnimating || index === currentSlide) return;
+        isAnimating = true;
+        
+        // Désactiver le dot actuel
         dots[currentSlide].classList.remove('active');
         
-        // Activer la nouvelle carte
+        // Activer le nouveau dot
+        dots[index].classList.add('active');
+        
+        // Transition fluide: d'abord montrer la nouvelle carte
+        cards[index].classList.add('active');
+        
+        // Puis cacher l'ancienne après un court délai
         setTimeout(() => {
-            cards[currentSlide].classList.remove('exit');
-            cards[index].classList.add('active');
-            dots[index].classList.add('active');
+            cards[currentSlide].classList.remove('active');
             currentSlide = index;
-        }, 100);
+            isAnimating = false;
+        }, 50);
     }
     
     // Navigation par dots
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            if (index !== currentSlide) {
-                goToSlide(index);
-            }
+            goToSlide(index);
         });
     });
     
     // Swipe sur les cartes
     let touchStartX = 0;
-    let touchEndX = 0;
     
     grid.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
     }, { passive: true });
     
     grid.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }, { passive: true });
-    
-    function handleSwipe() {
+        const touchEndX = e.changedTouches[0].screenX;
         const diff = touchStartX - touchEndX;
+        
         if (Math.abs(diff) > 50) {
             if (diff > 0 && currentSlide < cards.length - 1) {
-                // Swipe gauche -> slide suivant
                 goToSlide(currentSlide + 1);
             } else if (diff < 0 && currentSlide > 0) {
-                // Swipe droite -> slide précédent
                 goToSlide(currentSlide - 1);
             }
         }
-    }
+    }, { passive: true });
     
-    // Auto-play une seule fois (après 2 secondes)
+    // Auto-play une seule fois (après 2.5 secondes)
     setTimeout(() => {
         if (!hasAutoPlayed && currentSlide === 0) {
             goToSlide(1);
@@ -241,26 +241,5 @@ function initBeforeAfterCarousel() {
 
 // Initialiser au chargement
 document.addEventListener('DOMContentLoaded', function() {
-    initBeforeAfterCarousel();
-});
-
-// Réinitialiser au resize
-window.addEventListener('resize', function() {
-    // Réinitialiser si on passe en mobile
-    if (window.innerWidth <= 768) {
-        const cards = document.querySelectorAll('.before-after__card');
-        const dots = document.querySelectorAll('.before-after__dot');
-        
-        // Reset l'état
-        cards.forEach(card => {
-            card.classList.remove('active', 'exit');
-        });
-        dots.forEach(dot => {
-            dot.classList.remove('active');
-        });
-        
-        // Activer la première
-        if (cards[0]) cards[0].classList.add('active');
-        if (dots[0]) dots[0].classList.add('active');
-    }
+    setTimeout(initBeforeAfterCarousel, 100);
 });

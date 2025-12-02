@@ -424,30 +424,41 @@
         overflow: hidden;
     }
     
+    /* Les deux cartes empilées */
     .before-after__card {
+        width: 100%;
+        opacity: 0;
+        visibility: hidden;
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        opacity: 0;
-        transform: translateX(30px);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-        pointer-events: none;
+        transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
     }
     
+    /* Première carte visible par défaut */
+    .before-after__card:first-child {
+        position: relative;
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Carte active */
     .before-after__card.active {
         position: relative;
         opacity: 1;
-        transform: translateX(0);
-        pointer-events: auto;
+        visibility: visible;
+        z-index: 2;
     }
     
-    .before-after__card.exit {
+    /* Carte inactive */
+    .before-after__card:not(.active) {
+        position: absolute;
         opacity: 0;
-        transform: translateX(-30px);
+        visibility: hidden;
+        z-index: 1;
     }
     
-    /* Indicateurs de navigation */
+    /* Indicateurs de navigation - Gris/Bleu */
     .before-after__dots {
         display: flex !important;
         justify-content: center;
@@ -456,10 +467,10 @@
     }
     
     .before-after__dot {
-        width: 12px;
-        height: 12px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
-        background: #e2e8f0;
+        background: #d1d5db;
         border: none;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -469,14 +480,6 @@
     .before-after__dot.active {
         background: #4A90E2;
         transform: scale(1.2);
-    }
-    
-    .before-after__dot--before.active {
-        background: #ef4444;
-    }
-    
-    .before-after__dot--after.active {
-        background: #20C997;
     }
 
 
