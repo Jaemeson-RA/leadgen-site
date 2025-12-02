@@ -5,10 +5,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // CARROUSEL TÉMOIGNAGES - BOUCLE INFINIE
     const track = document.getElementById('testimonials-track');
     if (track) {
-        // Dupliquer les cartes pour créer une boucle infinie seamless
-        const originalCards = track.innerHTML;
-        track.innerHTML = originalCards + originalCards;
-        console.log('Carrousel témoignages: cartes dupliquées pour boucle infinie');
+        // Cloner TOUS les enfants pour une boucle seamless
+        const cards = track.children;
+        const cardsArray = Array.from(cards);
+        
+        // Dupliquer chaque carte
+        cardsArray.forEach(card => {
+            const clone = card.cloneNode(true);
+            track.appendChild(clone);
+        });
+        
+        console.log('Carrousel: ' + track.children.length + ' cartes (originales + clones)');
     }
 });
 

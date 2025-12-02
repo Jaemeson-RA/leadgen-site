@@ -2424,8 +2424,7 @@ html, body {
     animation-play-state: paused;
 }
 
-@keyframes scroll-testimonials {
-    0% { transform: translateX(0); }
+
     100% { transform: translateX(-50%); }
 }
 
@@ -2677,8 +2676,7 @@ html, body {
     animation-play-state: paused;
 }
 
-@keyframes scroll-testimonials {
-    0% { transform: translateX(0); }
+
     100% { transform: translateX(-50%); }
 }
 
@@ -2966,7 +2964,22 @@ html, body {
     animation: scroll-infinite 45s linear infinite !important;
 }
 
-@keyframes scroll-infinite {
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.testimonials-carousel__track:hover {
+    animation-play-state: paused !important;
+}
+
+
+/* ============================================ */
+/* CARROUSEL TÉMOIGNAGES - DÉFILEMENT INFINI */
+/* ============================================ */
+
+@keyframes marquee {
     0% {
         transform: translateX(0);
     }
@@ -2975,6 +2988,92 @@ html, body {
     }
 }
 
-.testimonials-carousel__track:hover {
-    animation-play-state: paused !important;
+#testimonials {
+    padding: 60px 0 !important;
+    background: #f8f9fa !important;
+    overflow: hidden !important;
+}
+
+#testimonials .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+}
+
+.testimonials-carousel {
+    width: 100% !important;
+    overflow: hidden !important;
+    position: relative;
+    padding: 30px 0 !important;
+}
+
+.testimonials-carousel::before,
+.testimonials-carousel::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.testimonials-carousel::before {
+    left: 0;
+    background: linear-gradient(to right, #f8f9fa 0%, transparent 100%);
+}
+
+.testimonials-carousel::after {
+    right: 0;
+    background: linear-gradient(to left, #f8f9fa 0%, transparent 100%);
+}
+
+.testimonials-carousel__track {
+    display: flex !important;
+    width: max-content !important;
+    animation: marquee 40s linear infinite !important;
+    gap: 0 !important;
+}
+
+.testimonials-carousel:hover .testimonials-carousel__track {
+    animation-play-state: paused;
+}
+
+.testimonial-card {
+    flex: 0 0 300px !important;
+    width: 300px !important;
+    min-height: 280px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e8e8e8;
+    margin-right: -20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Effet vague */
+.testimonial-card:nth-child(14n+1) { transform: translateY(-12px) rotate(-1.5deg); z-index: 2; }
+.testimonial-card:nth-child(14n+2) { transform: translateY(8px) rotate(1deg); z-index: 3; }
+.testimonial-card:nth-child(14n+3) { transform: translateY(-6px) rotate(-0.5deg); z-index: 4; }
+.testimonial-card:nth-child(14n+4) { transform: translateY(12px) rotate(1.5deg); z-index: 5; }
+.testimonial-card:nth-child(14n+5) { transform: translateY(-10px) rotate(-1deg); z-index: 4; }
+.testimonial-card:nth-child(14n+6) { transform: translateY(6px) rotate(0.5deg); z-index: 3; }
+.testimonial-card:nth-child(14n+7) { transform: translateY(-4px) rotate(-0.3deg); z-index: 2; }
+.testimonial-card:nth-child(14n+8) { transform: translateY(10px) rotate(1.2deg); z-index: 3; }
+.testimonial-card:nth-child(14n+9) { transform: translateY(-8px) rotate(-1.2deg); z-index: 4; }
+.testimonial-card:nth-child(14n+10) { transform: translateY(4px) rotate(0.8deg); z-index: 5; }
+.testimonial-card:nth-child(14n+11) { transform: translateY(-14px) rotate(-1.8deg); z-index: 4; }
+.testimonial-card:nth-child(14n+12) { transform: translateY(14px) rotate(1.8deg); z-index: 3; }
+.testimonial-card:nth-child(14n+13) { transform: translateY(-2px) rotate(-0.2deg); z-index: 2; }
+.testimonial-card:nth-child(14n+14) { transform: translateY(2px) rotate(0.2deg); z-index: 3; }
+
+.testimonial-card:hover {
+    transform: translateY(-15px) rotate(0deg) scale(1.03) !important;
+    box-shadow: 0 20px 45px rgba(74, 144, 226, 0.18);
+    z-index: 100 !important;
+}
+
+/* Cacher nav */
+.testimonials-carousel__nav {
+    display: none !important;
 }
