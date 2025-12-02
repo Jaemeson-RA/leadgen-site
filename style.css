@@ -2737,3 +2737,9 @@ html, body {
         font-size: 1.3rem;
     }
 }
+
+
+/* Cacher les dots Avant/Après sur desktop */
+.before-after__dots {
+    display: none;
+}
