@@ -25,7 +25,7 @@
     --spacing-md: 1.5rem;
     --spacing-lg: 2rem;
     --spacing-xl: 3rem;
-    --spacing-xxl: 2.5rem;
+    --spacing-xxl: 2rem;
     
     /* Border radius */
     --radius-sm: 4px;
@@ -44,6 +44,56 @@
     --transition-normal: 300ms ease-in-out;
     --transition-slow: 500ms ease-in-out;
 }
+
+/* ============================================ */
+/* CORRECTIONS GLOBALES */
+/* ============================================ */
+
+/* Supprimer TOUTES les scrollbars */
+* {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+*::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+/* Sections sans scroll interne */
+.section,
+.container,
+.how-it-works,
+.pricing,
+.testimonials,
+.faq,
+.cta {
+    overflow: visible !important;
+    max-height: none !important;
+}
+
+/* ESPACEMENTS SPÉCIFIQUES */
+#tarifs {
+    padding: 30px 0 15px 0 !important;
+}
+
+#testimonials {
+    padding: 20px 0 30px 0 !important;
+    background: #f8f9fa !important;
+}
+
+#contact {
+    background: #eef4fb !important;
+}
+
+.pricing__simulator {
+    margin-bottom: 15px !important;
+}
+
 
 /* ============================================ */
 /* RESET & BASE */
@@ -115,7 +165,7 @@ button {
 /* ============================================ */
 
 .section {
-    padding: 40px 0;
+    padding: 30px 0;
     width: 100%;
     overflow-x: hidden;
 }
@@ -2300,19 +2350,73 @@ button {
 }
 
 /* ============================================ */
-/* SECTIONS - ESPACEMENTS RÉDUITS */
+/* COMMENT ÇA MARCHE - EFFET VAGUE */
 /* ============================================ */
 
-#tarifs {
-    padding: 40px 0 20px 0 !important;
-    background: #fff;
+.step-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-#testimonials {
-    padding: 30px 0 40px 0 !important;
-    background: #f8f9fa;
+.step-card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-#contact {
-    background: #eef4fb;
+.step-card__inner {
+    padding: 10px 0;
+    overflow: visible !important;
+}
+
+.step-card__back {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.step-card.active .step-card__front {
+    background: #4A90E2 !important;
+    border: 2px solid #4A90E2 !important;
+    border-radius: 24px;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(74, 144, 226, 0.35);
+}
+
+.step-card.active .step-card__front .step-card__title,
+.step-card.active .step-card__front .step-card__text {
+    color: #fff !important;
+}
+
+.step-card.active .step-card__icon {
+    background: #fff !important;
+    color: #4A90E2 !important;
+}
+
+.step-card__front {
+    border-radius: 24px;
+}
+
+/* ============================================ */
+/* TÉMOIGNAGES - CARROUSEL */
+/* ============================================ */
+
+.flo-testimonials-slide {
+    display: none;
+}
+
+.flo-testimonials-slide.active {
+    display: block !important;
+}
+
+.flo-testimonials-carousel-wrapper {
+    padding: 0 70px;
+    position: relative;
+}
+
+.flo-testimonials-nav--prev {
+    left: 0;
+}
+
+.flo-testimonials-nav--next {
+    right: 0;
 }
