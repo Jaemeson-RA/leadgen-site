@@ -44,6 +44,16 @@
     --transition-normal: 300ms ease-in-out;
     --transition-slow: 500ms ease-in-out;
 }
+
+/* OVERRIDE SPACING SECTIONS */
+#tarifs.section {
+    padding: 50px 0 20px 0 !important;
+}
+
+#testimonials.section {
+    padding: 30px 0 50px 0 !important;
+}
+
 /* ============================================ */
 /* CORRECTIONS GLOBALES - AUCUN SCROLL */
 /* ============================================ */
@@ -2495,4 +2505,25 @@ button {
 
 .section--gray {
     background: #ffffff !important;
+}
+
+/* ============================================ */
+/* OVERRIDE FINAL - ESPACEMENT SECTIONS */
+/* ============================================ */
+
+section.pricing.section.section--gray#tarifs {
+    padding: 40px 0 20px 0 !important;
+    margin: 0 !important;
+    background: #fff !important;
+}
+
+section.testimonials.section#testimonials {
+    padding: 40px 0 !important;
+    margin: 0 !important;
+    background: #f8f9fa !important;
+}
+
+section.cta.section#contact {
+    padding: 40px 0 !important;
+    margin: 0 !important;
 }
