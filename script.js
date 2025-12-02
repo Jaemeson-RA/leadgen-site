@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     lucide.createIcons();
+    
+    // DUPLIQUER LES CARTES POUR SCROLL INFINI
+    const track = document.getElementById('testimonials-track');
+    if (track) {
+        const cards = track.innerHTML;
+        track.innerHTML = cards + cards; // Dupliquer pour boucle infinie
+    }
 });
 
 const header = document.getElementById('header');
@@ -71,88 +78,6 @@ if (employeesSlider) {
         priceDisplay.textContent = Math.round(emp * ppu);
         pricePerUserDisplay.textContent = ppu.toFixed(2);
     });
-}
-
-// CARROUSEL TÉMOIGNAGES SUPERPOSÉ
-const testimonialCards = document.querySelectorAll('.testimonial-card');
-const prevBtn = document.getElementById('testimonials-prev');
-const nextBtn = document.getElementById('testimonials-next');
-let currentCenter = 0;
-const totalCards = testimonialCards.length;
-let autoplayInterval;
-
-function updateCarouselPositions() {
-    testimonialCards.forEach((card, index) => {
-        // Calculer la position relative au centre
-        let position = index - currentCenter;
-        
-        // Gérer le wrap-around pour boucle infinie
-        if (position > totalCards / 2) position -= totalCards;
-        if (position < -totalCards / 2) position += totalCards;
-        
-        // Appliquer l'attribut data-position
-        card.setAttribute('data-position', position);
-    });
-}
-
-function nextTestimonial() {
-    currentCenter = (currentCenter + 1) % totalCards;
-    updateCarouselPositions();
-}
-
-function prevTestimonial() {
-    currentCenter = (currentCenter - 1 + totalCards) % totalCards;
-    updateCarouselPositions();
-}
-
-function startAutoplay() {
-    autoplayInterval = setInterval(nextTestimonial, 3500);
-}
-
-function stopAutoplay() {
-    clearInterval(autoplayInterval);
-}
-
-if (testimonialCards.length > 0) {
-    // Initialiser les positions
-    updateCarouselPositions();
-    
-    // Démarrer l'autoplay
-    startAutoplay();
-    
-    // Navigation boutons
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            stopAutoplay();
-            prevTestimonial();
-            startAutoplay();
-        });
-    }
-    
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            stopAutoplay();
-            nextTestimonial();
-            startAutoplay();
-        });
-    }
-    
-    // Clic sur une carte pour la centrer
-    testimonialCards.forEach((card, index) => {
-        card.addEventListener('click', () => {
-            stopAutoplay();
-            currentCenter = index;
-            updateCarouselPositions();
-            startAutoplay();
-        });
-    });
-    
-    // Pause au survol
-    const carousel = document.querySelector('.testimonials-carousel');
-    if (carousel) {
-        carousel.addEventListener('mouseenter', stopAutoplay);
-        carousel.addEventListener('mouseleave', startAutoplay);
-    }
 }
 
 // FAQ
